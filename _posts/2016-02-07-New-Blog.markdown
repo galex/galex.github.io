@@ -1,1 +1,10 @@
-≈
+---
+layout: post
+title: New blog!
+category: general thoughts
+---
+
+Hey, here we go again! New blog! But this time, and because I forgot my MySQL server root password, I decided to try Jekyll. It seems cool and all, having a file based site/blog. Maybe we are going bakc to the roots of things. 
+
+Cheers,
+Alex.
