@@ -2,7 +2,7 @@
 layout: post
 type: drafts
 title: Android Permissions Gradle Plugin
-category: android dev gradle plugin permissions marshmallow\
+category:
 ---
 My first Gradle Plugin, [Android Permissions Gradle Plugin](https://github.com/galex/android-permissions-gradle-plugin) was just deployed into jCenter. Yay!
 
