@@ -6,7 +6,7 @@ category:
 ---
 My first Gradle Plugin, [Android Permissions Gradle Plugin](https://github.com/galex/android-permissions-gradle-plugin) was just deployed into jCenter. Yay!
 
-Developing this was a great experience. I use gradle heavily as any other developer as the main project I'm working on has lots of flavors. But the need never arose for a Gradle Plugin until recently, when I wanted to compile the SDK with the latest Android version, 23.
+Developing this was a great experience. I use gradle heavily as any other developer as the main project I'm working on has lots of flavors. But the need never arose for a Gradle Plugin until recently, when I wanted to compile the project with the latest Android version, 23, aka marshmallow.
 
 What is the issue with the new Android Permissions System in Marshmallow? Nothing, it's a great feature. It was long time due in my opinion. As a developer you have to request on runtime the [Dangerous Permissions](http://developer.android.com/guide/topics/security/permissions.html#normal-dangerous) you have declared in your Android Manifest. But there is no API (that I'm aware of!) to request from Android the list of your declared Dangerous Permissions.
 
