@@ -2,7 +2,7 @@
 layout: post
 type: drafts
 title: Android Permissions Gradle Plugin
-category: android dev gradle plugin permissions marshmallow
+category: android dev gradle plugin permissions marshmallow\
 ---
 My first Gradle Plugin, [Android Permissions Gradle Plugin](https://github.com/galex/android-permissions-gradle-plugin) was just deployed into jCenter. Yay!
 
@@ -25,4 +25,3 @@ What opened my eyes on how to get this done are the [Android Dev Summit 2015](ht
 In one of the talks, [Android Build System](https://www.youtube.com/watch?v=OOEDKf06WqA), the Android Tools Team talks about this function: {% highlight groovy %}variant.registerJavaGeneratingTask(task, outputFolder){% endhighlight %}Exactly what I needed! From there, parsing the manifest to generating the helper class was just a matter of time & tears.
 
 I hope this plugin will be helpful to more people than just myself, and will be glad to get your feedback!
-
