@@ -1,9 +1,10 @@
 ---
 layout: post
-type: drafts
 title: Android Permissions Gradle Plugin
-category:
+date: "2016-02-08 18:56:57 +0200"
 ---
+Hi there!
+
 My first Gradle Plugin, [Android Permissions Gradle Plugin](https://github.com/galex/android-permissions-gradle-plugin) was just deployed into jCenter. Yay!
 
 Developing this was a great experience. I use gradle heavily as any other developer as the main project I'm working on has lots of flavors. But the need never arose for a Gradle Plugin until recently, when I wanted to compile the project with the latest Android version, 23, aka marshmallow.
@@ -20,8 +21,14 @@ To build a gradle plugin, you will need some documentation:
 - [Android Gradle Plugin DSL](http://google.github.io/android-gradle-dsl/current/) What components the Android plugin adds
 - [Android Gradle Plugin API](http://google.github.io/android-gradle-dsl/javadoc/) What methods/variables are available from the Android plugin
 
-What opened my eyes on how to get this done are the [Android Dev Summit 2015](https://www.youtube.com/playlist?list=PLWz5rJ2EKKc_Tt7q77qwyKRgytF1RzRx8) talks which are **GREAT**. If you didn't watch them already, I strongly suggest you do. 
+What opened my eyes on how to get this done are the [Android Dev Summit 2015](https://www.youtube.com/playlist?list=PLWz5rJ2EKKc_Tt7q77qwyKRgytF1RzRx8) talks which are **GREAT**. If you didn't watch them already, I strongly suggest you do.
 
-In one of the talks, [Android Build System](https://www.youtube.com/watch?v=OOEDKf06WqA), the Android Tools Team talks about this function: {% highlight groovy %}variant.registerJavaGeneratingTask(task, outputFolder){% endhighlight %}Exactly what I needed! From there, parsing the manifest to generating the helper class was just a matter of time & tears.
+In one of the talks, [Android Build System](https://www.youtube.com/watch?v=OOEDKf06WqA), the Android Tools Team talks about this function:
+
+{% highlight groovy %}
+variant.registerJavaGeneratingTask(task, outputFolder)
+{% endhighlight %}
+
+Exactly what I needed! From there, parsing the manifest to generating the helper class was just a matter of time & tears.
 
 I hope this plugin will be helpful to more people than just myself, and will be glad to get your feedback!
