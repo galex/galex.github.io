@@ -9,7 +9,7 @@
 title: Alex's blog
 email: alexandre.gherschon@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Alexander Gherschon's Blog. You'll find here blog posts, (open-source) projects info and general programmer whines.
+  Alexander Gherschon's Blog. You'll find here blog posts, (open-source) projects info and general programmer stuff.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://galex.co.il" # the base hostname & protocol for your site
 twitter_username: galex
