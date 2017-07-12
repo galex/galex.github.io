@@ -37,7 +37,7 @@ To learn a new technology, the secret is to use it. Take one of your existing si
 
 Look for a Kotlin [meetup](https://www.meetup.com) group near you or create one! I am convinced we learn best when we unite and share our knowledge within our developer communities. I started [KotlinTLV](http://kotlintlv.co.il) and we were 100+ strong at the first meetup called [Introduction to Kotlin](https://www.meetup.com/KotlinTLV/events/240383900/).
 
-![Introduction to Kotlin]({{ site.url }}/assets/Introduction-to-kotlin.jpg){: .center-image }
+![Introduction to Kotlin]({{ site.url }}/assets/introduction-to-kotlin.jpg){: .center-image }
 
 It was **amazing**! We have already 3 more meetups planned as there is so much to talk about with Kotlin: Language features, Platforms, Frameworks, Libraries...
 
