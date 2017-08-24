@@ -4,7 +4,7 @@ title: How to get started with Kotlin
 date: 2017-07-12
 ---
 
-![Kotlin Logo]({{ site.url }}/assets/kotlin-logo.jpg){: .center-image }
+![Kotlin Logo]({{ site.url }}/assets/get-started-with-kotlin/kotlin-logo.jpg){: .center-image }
 
 
 [Kotlin](http://kotlinlang.org/) is a new programming language for the [JVM](https://kotlinlang.org/docs/reference/server-overview.html), [Android](https://kotlinlang.org/docs/reference/android-overview.html), [Javascript](https://kotlinlang.org/docs/reference/js-overview.html), and in the near future, [native (iOS, Windows)](https://github.com/JetBrains/kotlin-native).
@@ -23,11 +23,11 @@ Read the [documentation reference](http://kotlinlang.org/docs/reference/) ([also
 
 [Kotlin in Action](https://www.manning.com/books/kotlin-in-action) was written by [Dmitry Jemerov](https://twitter.com/intelliyole?lang=en) and [Svetlana Isakova](https://twitter.com/sveta_isakova?lang=en), two members of the Kotlin development team. They extensively explain **why** things are the way the are. The information contained in this book is of high quality, so I advise you to get it and read it, even multiple times!
 
-![Kotlin in Action]({{ site.url }}/assets/kotlin-in-action.jpg){: .center-image }
+![Kotlin in Action]({{ site.url }}/assets/get-started-with-kotlin/kotlin-in-action.jpg){: .center-image }
 
 The second book, [Kotlin for Android Developers](https://antonioleiva.com/kotlin-android-developers-book/) ([paper](https://www.amazon.com/gp/product/1530075610/)/[ebook](https://leanpub.com/kotlin-for-android-developers)), written by [Antonio Leiva](https://twitter.com/lime_cl), is an **excellent** book that you can literally read in a few hours. It goes straight to the point with lots and lots of code in it. I would recommend Android developers to start by reading this book first and then continuing with the in-depth [Kotlin in Action](https://www.manning.com/books/kotlin-in-action) book.
 
-![Kotlin For Android Developers]({{ site.url }}/assets/kotlin-for-android-developers.jpg){: .center-image }
+![Kotlin For Android Developers]({{ site.url }}/assets/get-started-with-kotlin/kotlin-for-android-developers.jpg){: .center-image }
 
 ## Projects
 
@@ -37,7 +37,7 @@ To learn a new technology, the secret is to use it. Take one of your existing si
 
 Look for a Kotlin [meetup](https://www.meetup.com) group near you or create one! I am convinced we learn best when we unite and share our knowledge within our developer communities. I started [KotlinTLV](http://kotlintlv.co.il) and we were 100+ strong at the first meetup called [Introduction to Kotlin](https://www.meetup.com/KotlinTLV/events/240383900/).
 
-![Introduction to Kotlin]({{ site.url }}/assets/introduction-to-kotlin.jpg){: .center-image }
+![Introduction to Kotlin]({{ site.url }}/assets/get-started-with-kotlin/introduction-to-kotlin.jpg){: .center-image }
 
 It was **amazing**! We have already 3 more meetups planned as there is so much to talk about with Kotlin: Language features, Platforms, Frameworks, Libraries...
 
