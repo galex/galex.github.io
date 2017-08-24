@@ -1,15 +1,14 @@
 ---
 layout: post
 title: Introduction to Gradle
-permalink: Introduction-to-Gradle
 ---
 
-Gradle is a build system: its goal is to build your project. To install Gradle:
+[Gradle](https://gradle.org/) is a build system: its goal is to build your project. To install Gradle:
 {% highlight bash %}
 brew update && brew install gradle
 {% endhighlight %}
 
-Gradle revolves around main two concepts:
+Gradle revolves around two main concepts:
 
 ## Gradle Tasks
 
@@ -22,7 +21,7 @@ task(hello) {
 }
 {% endhighlight %}
 
-To run the task open your favorite console app and run the following:
+To run the task, open your favorite console app and run the following:
 
 {% highlight bash %}
 gradle -b hello.gradle hello
@@ -35,15 +34,15 @@ This will output to:
 Hello World!
 {% endhighlight %}
 
-Congratulations! You just wrote your first gradle task in a gradle script, in [Groovy](http://groovy-lang.org/)!
+Congratulations! You just wrote your first Gradle task! Note that the programming language here is [Groovy](http://groovy-lang.org/), but [Kotlin](https://kotlinlang.org/) is [on its way](https://blog.gradle.org/kotlin-scripting-update)!
 
-Gradle comes with [**many tasks**](https://docs.gradle.org/current/userguide/more_about_tasks.html) by default, and to extend Gradle capabilities tasks are packaged into **Gradle Plugins** to offer more specific tasks to your type of project.
+By default, Gradle comes with [**many tasks**](https://docs.gradle.org/current/userguide/more_about_tasks.html) and to extend Gradle capabilities, tasks are packaged into **Gradle Plugins** to offer more specific tasks for your type of project.
 
 ## Gradle Plugins
 
 Plugins add tasks to your project to build whatever you want to build.
 
-A Java developer which would want to build his Java project will use a Gradle Plugin called the [Java Gradle Plugin](https://docs.gradle.org/current/userguide/java_plugin.html).
+A Java developer which would want to build his Java project, will use a Gradle Plugin called the [Java Gradle Plugin](https://docs.gradle.org/current/userguide/java_plugin.html).
 
 Gradle is not limited to the Java world! An iOS developer could also use Gradle to build his iOS app by using a specific plugin created to build [iOS projects](https://github.com/openbakery/gradle-xcodePlugin). A .Net developer could build his own .Net project by using a specific [.Net Gradle Plugin](https://github.com/Ullink/gradle-msbuild-plugin). You get the idea!
 
@@ -51,19 +50,19 @@ On Android, Google develops the [Android Gradle Plugin](http://tools.android.com
 
 Let’s see a concrete example. Download [IntelliJ](https://www.jetbrains.com/idea/) and create a basic Gradle based Java project:
 
-![Create a basic gradle Java project]({{ site.url }}/assets/introduction-to-gradle/create-java-gradle-project.png){: .center-image }
+![Create a basic Gradle Java project]({{ site.url }}/assets/introduction-to-gradle/create-java-gradle-project.png){: .center-image }
 
 In this newly created project, you can see two important files:
 
 ![project structure]({{ site.url }}/assets/introduction-to-gradle/project-structure.png){: .center-image }
 
-The **settings.gradle** file is the main entry point for gradle in a folder. In this file, the main project is configured or if you have a multi-modules project, the list of modules will be set. In every project/module, a **build.gradle** file will indicate to Gradle how you intend to build your project/module.
+The **settings.gradle** file is the main entry point for Gradle in a folder. In this file, the main project is configured. If you have a multi-modules project, the list of modules will be set. In every project/module, a **build.gradle** file will indicate to Gradle how you intend to build your project/module.
 
-In this case, as you created a Java project, your build.gradle will look like this:
+Your build.gradle will look like this:
 
 ![build-gradle-file]({{ site.url }}/assets/introduction-to-gradle/build-gradle.png){: .center-image }
 
-On line number **4** you can see that the **Java Gradle plugin** is applied. This means a list of Java related tasks were added through this plugin and now we can build a Java project with it!
+On line number **4** you can see that the **[Java Gradle Plugin](https://docs.gradle.org/current/userguide/java_plugin.html)** is applied. This means a list of Java related tasks were added through this plugin and now we can build a Java project with it!
 
 The most important task you need to learn about is a task named **“tasks”**. This is the first task I will run when I enter an existing project to see what are the tasks that are defined in this project. Run “gradle tasks” inside your newly created project:
 
@@ -74,7 +73,7 @@ gradle tasks
 ./gradlew tasks
 {% endhighlight %}
 
-The **Gradle Wrapper** is an executable script that embeds Gradle inside your project. That way every project on your computer can have its own Gradle version and you don't have to install every Gradle version directly on your computer. Not that you don't have to use a Gradle wrapper but it is considered a good practice to do so.
+The **Gradle Wrapper** is an executable script that embeds Gradle inside your project. That way every project on your computer can have its own Gradle version and you don't have to install every Gradle version directly on your computer. Note that you don't **have** to use a Gradle wrapper but it is considered a good practice to do so.
 
 And the output will look like this:
 
@@ -84,6 +83,8 @@ You can see now that we have a task named **jar** which will compile the Java co
 
 ## Conclusion
 
-Gradle is awesome! Everything you do which revolves around your project can be automated into your project Gradle build. For example, at my current job, our team uses daily a Gradle Plugin to download and adapt string translations from a internal company tool the translations team uses.
+Gradle is awesome! And even more with [Kotlin](https://blog.gradle.org/kotlin-scripting-update)! Everything you do that revolves around your project can be automated into your project Gradle build. For example, at my current job, our team uses daily a Gradle Plugin to download and adapt string translations from an internal company tool the translations team uses.
 
 To continue learning about Gradle you should totally have a look at the [official guides](https://gradle.org/guides/)!
+
+Thanks to Guy Tsype for proofreading!
