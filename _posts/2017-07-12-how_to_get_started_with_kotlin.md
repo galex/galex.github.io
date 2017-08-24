@@ -15,7 +15,7 @@ So it was decided. I will learn this mysterious new language! The question is ho
 
 ## Official documentation
 
-First, just [try it out]((https://try.kotlinlang.org/)). See if you even like it. Do the [Kotlin Koans](https://try.kotlinlang.org/) to check what Kotlin is all about.
+First, just [try it out](https://try.kotlinlang.org/). See if you even like it. Do the [Kotlin Koans](https://try.kotlinlang.org/) to check what Kotlin is all about.
 
 Read the [documentation reference](http://kotlinlang.org/docs/reference/) ([also available in PDF](https://kotlinlang.org/docs/kotlin-docs.pdf)), it is 100% free. It wasn't very pleasant to read as it is indeed just a reference, not an explanation about why things were defined the way they are. For me, it just doesn't stick if I don't understand the **why** in addition to the **how**. So to continue, and as I love technical books, I ordered the two main ones on Kotlin.
 
