@@ -14,7 +14,7 @@ I had the immense pleasure to attend a Kotlin workshop taught by [Svetlana Isako
 
 Svetlana is also the co-author of [Kotlin in Action](https://www.manning.com/books/kotlin-in-action) together with [Dmitry Jemerov](https://twitter.com/intelliyole?lang=en). Get the book and use **KOTLINTLV** for a 45% coupon code! A really good read if you are interested in Kotlin :)
 
-Experience wise, I do not have as much mileage as I would like to have at this point. I've rewritten from scratch a Gradle Plugin we use at work (in which I improved execution speed from ~2 minutes to 8 seconds thanks to coroutines!). I also wrote an Android podcast app for [Talking Kotlin](https://taklingkotlin.com) where [Hadi Hariri](https://twitter.com/hadihariri) interviews developers about their beginnings and experiences with Kotlin. The app will be open sourced when published.
+Experience wise, I do not have as much mileage as I would like to have at this point. I've rewritten from scratch a Gradle Plugin we use at work (in which I improved execution speed from ~2 minutes to 8 seconds thanks to coroutines!). I also wrote an Android podcast app for [Talking Kotlin](https://taklingkotlin.com) where [Hadi Hariri](https://twitter.com/hhariri) interviews developers about their beginnings and experiences with Kotlin. The app will be open sourced when published.
 
 This workshop came perfectly on time for me to clarify some features I didn't really get before ([the concept of Nothing](https://twitter.com/crafty/status/921292662724063233) and what is going on with suspended functions in coroutines, mainly).
 
