@@ -8,7 +8,7 @@ category:
 
 ![tel aviv view from Google Campus]({{ site.url }}/assets/kotlin-workshop-sveta/tel-aviv.jpg){: .center-image }
 
-I had the immense pleasure to attend a Kotlin workshop taught by Svetlana Isakova herself! For those who don't know, Svetlana is a Developer advocate at [Jetbrains](https://jetbrains.com). She started to work there in 2011 on the compiler at the very beginning of the Kotlin project. She was always the one answering the talk requests Jetbrains was receiving so she naturally became part of the advocate team of the language.
+I had the immense pleasure to attend a Kotlin workshop taught by [Svetlana Isakova](https://twitter.com/sveta_isakova) herself! For those who don't know, Svetlana is a Developer advocate at [Jetbrains](https://jetbrains.com). She started to work there in 2011 on the compiler at the very beginning of the Kotlin project. She was always the one answering the talk requests Jetbrains was receiving so she naturally became part of the advocate team of the language.
 
 ![Svetlana Isakova and me, Alex Gherschon]({{ site.url }}/assets/kotlin-workshop-sveta/svetlana-isakova-alex-gherschon.png){: .center-image }
 
@@ -16,7 +16,7 @@ Svetlana is also the co-author of [Kotlin in Action](https://www.manning.com/boo
 
 Experience wise, I do not have as much mileage as I would like to have at this point. I've rewritten from scratch a Gradle Plugin we use at work (in which I improved execution speed from ~2 minutes to 8 seconds thanks to coroutines!). I also wrote an Android podcast app for [Talking Kotlin](https://taklingkotlin.com) where [Hadi Hariri](https://twitter.com/hadihariri) interviews developers about their beginnings and experiences with Kotlin. The app will be open sourced when published.
 
-This workshop came perfectly on time for me to clarify some features I didn't really get before (the concept of 'Nothing' and what is going on with suspended functions in coroutines, mainly).
+This workshop came perfectly on time for me to clarify some features I didn't really get before ([the concept of Nothing](https://twitter.com/crafty/status/921292662724063233) and what is going on with suspended functions in coroutines, mainly).
 
 ![Google Campus TLV]({{ site.url }}/assets/kotlin-workshop-sveta/campus-tlv.jpg){: .center-image }
 
@@ -34,7 +34,7 @@ Svetlana is an amazing teacher. She managed to cover **all** the main features a
 
 ![quiz]({{ site.url }}/assets/kotlin-workshop-sveta/quiz.png){: .center-image }
 
-After each presentation a quiz was distributed. Those were refreshing our attention and highlighting the key points on each presentation. To brag a little, I did get most of the questions right but not all of them! I've got to study more!
+After each presentation a quiz was distributed. Those were for refreshing our attention and highlighting the key points on each presentation. To brag a little, I did get most of the questions right but not all of them! I've got to study more!
 
 ![quiz]({{ site.url }}/assets/kotlin-workshop-sveta/accessible-teacher.jpg){: .center-image }
 
@@ -46,10 +46,10 @@ Amazing times!
 
 ![quiz]({{ site.url }}/assets/kotlin-workshop-sveta/stickers.jpg){: .center-image }
 
-We did not write code on our computers but as so much material was covered I think it suited well the level of expertise (and availability I guess) of Svetlana. I plan to go through all of it in the next weeks and prepare exercises to go with the presentations to pass this knowledge through 2h workshop sessions at [KotlinTLV](https://kotlintlv.co.il).
+We did not write code on our computers but as so much material was covered I think it suited well the level of expertise (and availability I guess) of Svetlana. I plan to go through all of it in the next weeks and prepare exercises to go with the presentations to pass this knowledge through two hours workshop sessions at [KotlinTLV](https://kotlintlv.co.il).
 
-To conclude, I'd like to thank the organizers of this workshop: [Yonatan V. Levin](https://twitter.com/parahall), [Britt Barak](https://twitter.com/BrittBarak) and [Yossi Segev](https://twitter.com/yossisegev). They worked really hard to give us this opportunity and I thank them for their time and efforts.
+To conclude, I'd like to thank firstly Svetlana Isakova for coming and teaching us and secondly the organizers of this workshop: [Yonatan V. Levin](https://twitter.com/parahall), [Britt Barak](https://twitter.com/BrittBarak) and [Yossi Segev](https://twitter.com/yossisegev). They worked really hard to give us this opportunity and I thank them for their time and efforts.
 
-If you are an Android developer in Israel, you should definitely join [Android Academy]()! And of course if you are interested in Kotlin (on any platform) join the rest of us at [KotlinTLV](https://kotlintlv.co.il).
+If you are an Android developer in Israel, you should definitely join [Android Academy](https://www.meetup.com/TLV-Android-Academy/)! And of course, if you are interested in Kotlin (on any platform) join the rest of us at [KotlinTLV](https://www.meetup.com/KotlinTLV/).
 
 Cheers!
