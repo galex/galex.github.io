@@ -208,4 +208,4 @@ onAudioFocusChange = AudioManager.OnAudioFocusChangeListener { focusChange: Int 
 }
 {% endhighlight %}
 
-[The whole explanation deserved its own blogpost! ](http://galex.co.il/2017/11/06/Dont_Use_lambdas_as_listeners_in_Kotlin_Update.html)!
+[The whole explanation deserved its own blogpost! ](http://galex.co.il/2017/11/07/Dont_Use_lambdas_as_listeners_in_Kotlin_Update.html)!
