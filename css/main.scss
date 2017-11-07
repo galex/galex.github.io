@@ -23,7 +23,7 @@ $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
-$content-width:    800px;
+$content-width:    1000px;
 
 $on-palm:          600px;
 $on-laptop:        800px;
@@ -56,4 +56,8 @@ $on-laptop:        800px;
 {
     margin: 0 auto;
     display: block;
+}
+
+blockquote {
+    border-left: 0px solid #ccc;
 }
