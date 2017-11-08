@@ -78,7 +78,7 @@ if (function1 != null) {
 Log.d(MainActivity.Companion.getTAG(), "granted = " + (access$getAudioManager$p.requestAudioFocus((OnAudioFocusChangeListener) mainActivityKt$sam$OnAudioFocusChangeListener$4186f324, 3, 1) == 1));
 {% endhighlight %}
 
-Our lambda / function literal is wrapped inside a class implementing the interface ([SAM Conversion](https://kotlinlang.org/docs/reference/java-interop.html#sam-conversions)), which is the whole issue here.
+Our lambda / function literal is wrapped inside a class implementing the interface ([SAM Conversion](https://kotlinlang.org/docs/reference/java-interop.html#sam-conversions)) but we do not hold a reference to the converted class, which is the whole issue.
 
 ### Without **lateinit** (onAudioFocusChangeListener2)
 
