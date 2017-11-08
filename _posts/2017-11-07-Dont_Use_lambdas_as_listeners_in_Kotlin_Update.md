@@ -8,7 +8,7 @@ Thank you to everyone of you who read the [original blogpost](http://galex.co.il
 
 ## The TLDR; Update
 
-As mentioned in the comments we actually can declare a lambda / function literal with an adapter function (the OnAudioFocusChangeListener interface):
+As mentioned in the comments we actually can declare a lambda this way:
 
 {% highlight kotlin %}
 onAudioFocusChange = AudioManager.OnAudioFocusChangeListener { focusChange: Int ->
@@ -17,7 +17,6 @@ onAudioFocusChange = AudioManager.OnAudioFocusChangeListener { focusChange: Int 
 }
 
 {% endhighlight %}
-This lambda is then used to define the body of the class that will be generated for Java via the [SAM Conversion](https://kotlinlang.org/docs/reference/java-interop.html#sam-conversions), as in our case, the we use API is written in Java so Java interop is part of the game.
 
 ## The Longer Update
 
