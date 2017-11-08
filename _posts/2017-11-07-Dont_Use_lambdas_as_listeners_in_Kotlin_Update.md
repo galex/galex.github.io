@@ -200,6 +200,6 @@ It's not an issue if the lambda is used in a functional way or as a callback. Th
 
 I hope the subject is now crystal clear for everyone!
 
-I'd like to thank Rhaquel Gherschon for for proofreading and [Christophe Beyls](https://twitter.com/BladeCoder) for giving me feedback on this article!
+I'd like to thank Rhaquel Gherschon for proofreading and [Christophe Beyls](https://twitter.com/BladeCoder) for giving me feedback on this article!
 
 Cheers!
