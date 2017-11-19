@@ -1,0 +1,97 @@
+---
+layout: post
+title: Droidcon London 2017
+category:
+---
+
+![lily]({{ site.url }}/assets/droidconuk17/lily.jpg){: .center-image }
+
+[DroidconUK](http://uk.droidcon.com/) is a two days conference in London. This edition was on October 26th and 27th. Asaf, a colleague, wanted to attend as well so we flew together on the 25th. Many thanks to [MyHeritage](https://www.myheritage.com) for helping us getting there!
+
+{% twitter https://twitter.com/galex/status/923240150271954944 align=center %}
+
+I was at [DroidconUK](http://uk.droidcon.com/) in 2012 and 2013 and I missed being there since then! For non-americans DroidconUK is the best Android Conference: you get to attend to high level talks, you get to meet well-known developers from the Android community, the best Googlers are usually present, and everyone is super nice and accessible.
+
+## Day 1
+
+#### [Android - A developer's History](https://skillsmatter.com/skillscasts/10011-keynote-android-a-retrospective) by [Chet Haase](https://twitter.com/chethaase) and [Romain Guy](https://twitter.com/romainguy)
+
+![android history talk]({{ site.url }}/assets/droidconuk17/android-history.jpg){: .center-image }
+
+This talk was about all the Android versions and devices since the beginning. I started on Android around 2009 when I got convinced by [Christophe Beyls](https://twitter.com/BladeCoder) (the one who wrote [the Hidden Costs of Kotlin](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-1-fbb9935d9b62) articles) to try this new platform as I was already a Java developer (on J2EE). I bought an HTC Hero which still boots to this day but is stuck on Android 2.1 and is so outdated it just sits around my office as a piece of nostalgia.
+
+#### [Data Persistence in Android — There's Room For Improvement](https://skillsmatter.com/skillscasts/10523-data-persistence-in-android-there-s-room-for-improvement) by [Florina Montenescu](https://twitter.com/FMuntenescu)
+
+{% twitter https://twitter.com/galex/status/923492980119482373 align=center %}
+
+[Florina](https://twitter.com/FMuntenescu)'s talk was about [Room](https://developer.android.com/topic/libraries/architecture/room.html) and was super interesting. I used Room in Talking Kotlin and it fits perfectly well with the other [Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html). A nice info I took out of this talk is that when you use **@Query** with **LiveData** the SQL SELECT query runs on a background thread for free:
+{% highlight kotlin %}
+@Dao
+interface ItemDao {
+    @Query("SELECT * FROM item order by pubDate DESC")
+    fun findAll(): List<Item>
+}
+{% endhighlight %}
+But calling a function annotated with **@Insert**, **@Update** and **@Delete** runs on the **UI Thread**. Two lines are enough to fix that issue thanks to Anko (based on Kotlin Coroutines):
+{% highlight kotlin %}
+// using Anko
+async(CommonPool) {
+    TKDatabase.getInstance(context).itemDao().insert(items)
+}
+{% endhighlight %}
+
+
+#### [Android Internals](https://skillsmatter.com/skillscasts/10526-android-internals-for-developers) by [Effie Barak](https://twitter.com/CodingChick)
+
+{% twitter https://twitter.com/galex/status/923505947330441217 align=center %}
+
+[Effie](https://twitter.com/CodingChick)'s talk (from Pinterest) was about Android Internals. I think every developer should want to know what a Zygote is and why we can't find by reflexion the object behind a system service. Worth watching!
+
+#### [Vector Workflows](https://skillsmatter.com/skillscasts/10781-reduce-reuse-recycle) by [Nick Butcher](https://twitter.com/crafty)
+
+{% twitter https://twitter.com/galex/status/923538096406302720 align=center %}
+
+[Nick Butcher](https://twitter.com/crafty) did a super-dense but mind-blowing talk on Vector Drawables and Animated Vector Drawables. I wanted to switch resources to vector drawables in my apps for a very long time but it always felt like I had the necessary skills as a developer. Nick showed us that it is actually quite simple with the help of sketch (first time I heard about it) and [shape shifter](shapeshifter.design). I still need to rewatch it in slow motion to learn all the goodies in there.
+
+#### [Doo z z z z z e](https://skillsmatter.com/skillscasts/10787-doo-z-z-z-z-z-e) by [Ralf Wondratschek](https://twitter.com/crafty)
+
+{% twitter https://twitter.com/galex/status/923550633436876801 align=center %}
+
+[Ralf](https://twitter.com/crafty) (from Evernote) is the author of [android-job](https://github.com/evernote/android-job). Hearing his thoughts on why this library is necessary for background jobs is eye-opening. We actually use this library in MyHeritage's app and we are quite happy with it.
+
+#### [Why do we need Clean Architecture](https://skillsmatter.com/skillscasts/11002-why-do-we-need-clean-architecture) by [Igor Wojda](https://twitter.com/igorwojda)
+
+{% twitter https://twitter.com/galex/status/923588287054385157 align=center %}
+
+Really interesting talk, worth watching! I've got to admit I feel I fall behind in terms of Clean Architecture and testing best practices. I do implement presenters and write tests but I have a guts feeling I do not do it in a way it gives me a lot of value over my code. Sometimes it does catch a bug but not that often. I will apply much more clean architecture in the near future to write better tests.
+
+## Day 2
+
+#### [Developers Are Users Too](https://skillsmatter.com/skillscasts/10790-keynote-looking-forward-to-florina-muntenescu-s-keynote-talk) by [Florina Montenescu](https://twitter.com/FMuntenescu)
+
+{% twitter https://twitter.com/galex/status/923832475218046977 align=center %}
+
+#### [Testing Android apps based on Dagger and RxJava](https://skillsmatter.com/skillscasts/10532-testing-android-apps-based-on-dagger-and-rxjava) by [Fabio Collini](https://twitter.com/fabioCollini)
+
+{% twitter https://twitter.com/galex/status/923848118831108097 align=center %}
+
+#### [Becoming a Master Window Fitter](https://skillsmatter.com/skillscasts/10297-a-talk-by-chris-banes) by [Chris Banes](https://twitter.com/chrisbanes)
+
+{% twitter https://twitter.com/galex/status/923866069055483904 align=center %}
+
+#### [Pragmatic Kotlin on Android](https://skillsmatter.com/skillscasts/10553-pragmatic-kotlin-on-android) by [Josh Skeen](https://twitter.com/mutexkid)
+
+{% twitter https://twitter.com/galex/status/923881621761265664 align=center %}
+
+#### [Travelling across Asia - Our journey from Java to Kotlin](https://skillsmatter.com/skillscasts/10533-travelling-across-asia-our-journey-from-java-to-kotlin) by [Maria Neumayer](https://twitter.com/marianeum) and [Amal Kakaiya](https://twitter.com/K4KYA)
+
+{% twitter https://twitter.com/galex/status/923949161074036736 align=center %}
+
+#### [Sinking Your Teeth Into Bytecode](https://skillsmatter.com/skillscasts/10012-keynote-sinking-your-teeth-into-bytecode) by [Jake Wharton](https://twitter.com/JakeWharton)
+
+{% twitter https://twitter.com/galex/status/923954517477134336 align=center %}
+
+
+## Conclusion
+
+Droidcon London is a **Great** conference. I learned so much and [there are plenty of talks I haven't seen yet](https://skillsmatter.com/conferences/8265-droidcon-london-2017#skillscasts). The high level of talks is totally worth it. I'll go back next year, for sure!
