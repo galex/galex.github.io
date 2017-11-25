@@ -10,19 +10,19 @@ category:
 
 {% twitter https://twitter.com/galex/status/923240150271954944 align=center %}
 
-I was at [DroidconUK](http://uk.droidcon.com/) in 2012 and 2013 and I missed being there ever since! For non-americans [DroidconUK](http://uk.droidcon.com/) is the best Android Conference: you get to attend high level talks **and** meet/talk to well-known developers and Googlers from the Android community!
+I was at [DroidconUK](http://uk.droidcon.com/) in 2012 and 2013 and I missed being there ever since! For non-americans [DroidconUK](http://uk.droidcon.com/) is the best Android Conference: you get to attend high level talks **and** meet & talk to well-known developers and Googlers from the Android Community!
 
 ## Day 1
 
 #### [Android - A developer's History](https://skillsmatter.com/skillscasts/10011-keynote-android-a-retrospective) by [Chet Haase](https://twitter.com/chethaase) and [Romain Guy](https://twitter.com/romainguy)
 
-This talk was about all the Android versions and devices since the beginning. I started on Android around 2009 when I got convinced by [Christophe Beyls](https://twitter.com/BladeCoder) (who wrote [the Hidden Costs of Kotlin](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-1-fbb9935d9b62) articles) to try this new platform as I was already a Java developer (on J2EE 🤢). I bought an [HTC Hero](http://cdn.mos.cms.futurecdn.net/93a28ea293d454bd0454e06cdded5885-480-80.jpg) which still boots to this day but is stuck on Android 2.1 and is so outdated it just sits around my office as a piece of nostalgia.
+This talk was about all the Android versions and devices since the beginning. I started on Android around 2009 when I got convinced by [Christophe Beyls](https://twitter.com/BladeCoder) (who wrote [the Hidden Costs of Kotlin](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-1-fbb9935d9b62) articles) to try this new platform as I was already a Java developer (on J2EE 🤢). I bought an [HTC Hero](http://cdn.mos.cms.futurecdn.net/93a28ea293d454bd0454e06cdded5885-480-80.jpg) which still boots to this day but is stuck on Android 2.1 and its so outdated it just sits in my office as a piece of nostalgia.
 
 ![android history talk]({{ site.url }}/assets/droidconuk17/android-history.jpg){: .center-image }
 
 #### [Data Persistence in Android — There's Room For Improvement](https://skillsmatter.com/skillscasts/10523-data-persistence-in-android-there-s-room-for-improvement) by [Florina Montenescu](https://twitter.com/FMuntenescu)
 
-[Florina](https://twitter.com/FMuntenescu)'s talk was about [Room](https://developer.android.com/topic/libraries/architecture/room.html) and was super interesting. I used Room in Talking Kotlin and it fits perfectly well with the other [Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html). A nice info I took out of this talk is that when you use **@Query** with **LiveData** the SQL SELECT query runs on a background thread for free:
+[Florina](https://twitter.com/FMuntenescu)'s talk was about [Room](https://developer.android.com/topic/libraries/architecture/room.html) and was super interesting. I used Room in [Talking Kotlin](https://play.google.com/store/apps/details?id=il.co.galex.talkingkotlin) and it fits perfectly well with the other [Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html). A nice info I took out of this talk is that when you use **@Query** with **LiveData** the SQL SELECT query runs on a background thread for free:
 {% highlight kotlin %}
 @Dao
 interface ItemDao {
@@ -81,25 +81,28 @@ This talk seemed rich in information but I didn't manage to follow. RxJava and D
 
 #### [Becoming a Master Window Fitter](https://skillsmatter.com/skillscasts/10297-a-talk-by-chris-banes) by [Chris Banes](https://twitter.com/chrisbanes)
 
-This talk is about the Window on Android and the related subject of shared element transitions. I feel like shared element transitions are a new layer on top of our already complicated activities but I should really implement those as they can give a wow effect to the users.
+The mains subject here was the **Window** on Android and the related subject of **shared element transitions**. I feel like shared element transitions are a new layer on top of our already complicated activities but I should still implement those as it can give a "wow effect" to the users.
 
 {% twitter https://twitter.com/galex/status/923866069055483904 align=center %}
 
 #### [Pragmatic Kotlin on Android](https://skillsmatter.com/skillscasts/10553-pragmatic-kotlin-on-android) by [Josh Skeen](https://twitter.com/mutexkid)
 
-First full talk about [Kotlin](https://kotlinlang.org/), yay! 
+First full talk about [Kotlin](https://kotlinlang.org/), yay! Besides the nice tips from this talk, I was super happy to see that Kotlin talks got the main room (Gate 1) for almost a full day. **The adoption rate of Kotlin is phenomenal within the Android Community!**
 
 {% twitter https://twitter.com/galex/status/923881621761265664 align=center %}
 
 #### [Travelling across Asia - Our journey from Java to Kotlin](https://skillsmatter.com/skillscasts/10533-travelling-across-asia-our-journey-from-java-to-kotlin) by [Maria Neumayer](https://twitter.com/marianeum) and [Amal Kakaiya](https://twitter.com/K4KYA)
 
+[Maria](https://twitter.com/marianeum) and [Amal](https://twitter.com/K4KYA) (both from Deliveroo) shared their story on how they adopted Kotlin in their company. If you were on the fence about Kotlin or if you were considering but not sure how to approach the transition, this talk is totally for you!
+
 {% twitter https://twitter.com/galex/status/923949161074036736 align=center %}
 
 #### [Sinking Your Teeth Into Bytecode](https://skillsmatter.com/skillscasts/10012-keynote-sinking-your-teeth-into-bytecode) by [Jake Wharton](https://twitter.com/JakeWharton)
 
-{% twitter https://twitter.com/galex/status/923954517477134336 align=center %}
+[Jake](https://twitter.com/JakeWharton) went deep into bytecode till I what I think was Assembly code! Before learning Kotlin, I barely (if not never) thought about looking into the bytecode for the Java code I was writing. With the Kotlin Plugin in IntelliJ, you have an option to look at the bytecode generated by what you write in Kotlin and from there you can decompile this bytecode and see what is the Java equivalent of your Kotlin code. This is super useful and I think this transparent approach helps a lot reassure old Java developers (like me!) that what happens behind the scene is actually quite good.
 
+{% twitter https://twitter.com/galex/status/923954517477134336 align=center %}
 
 ## Conclusion
 
-Droidcon London is a **Great** conference. I learned so much and [there are plenty of talks I haven't seen yet](https://skillsmatter.com/conferences/8265-droidcon-london-2017#skillscasts). The high level of talks is totally worth it. I'll go back next year, for sure!
+[Here are all the videos of DroidconUK 2017](https://skillsmatter.com/conferences/8265-droidcon-london-2017#skillscasts). Droidcon London is a **Great** conference. I learned so much and it opens the mind to new concepts. I usually go back home full of ideas for new libraries or things to try. The high level of talks is totally worth it. I'll go back next year, for sure!
