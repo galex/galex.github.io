@@ -16,7 +16,7 @@ I was at [DroidconUK](http://uk.droidcon.com/) in 2012 and 2013 and I missed bei
 
 #### [Android - A developer's History](https://skillsmatter.com/skillscasts/10011-keynote-android-a-retrospective) by [Chet Haase](https://twitter.com/chethaase) and [Romain Guy](https://twitter.com/romainguy)
 
-This talk was about all the Android versions and devices since the beginning. I started on Android around 2009 when I got convinced by [Christophe Beyls](https://twitter.com/BladeCoder) (who wrote [the Hidden Costs of Kotlin](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-1-fbb9935d9b62) articles) to try this new platform as I was already a Java developer (on J2EE 🤢). I bought an [HTC Hero](http://cdn.mos.cms.futurecdn.net/93a28ea293d454bd0454e06cdded5885-480-80.jpg) which still boots to this day but is stuck on Android 2.1 and its so outdated it just sits in my office as a piece of nostalgia.
+This talk was about all the versions and devices since the beginning of our Android times. I started on Android around 2009 when I got convinced by [Christophe Beyls](https://twitter.com/BladeCoder) (who wrote [the Hidden Costs of Kotlin](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-1-fbb9935d9b62) articles) to try this new platform as I was already a Java developer (on J2EE 🤢). I bought an [HTC Hero](http://cdn.mos.cms.futurecdn.net/93a28ea293d454bd0454e06cdded5885-480-80.jpg) which still boots to this day but is stuck on Android 2.1 and its so outdated it just sits in my office as a piece of nostalgia.
 
 ![android history talk]({{ site.url }}/assets/droidconuk17/android-history.jpg){: .center-image }
 
@@ -49,7 +49,7 @@ async(CommonPool) {
 
 #### [Vector Workflows](https://skillsmatter.com/skillscasts/10781-reduce-reuse-recycle) by [Nick Butcher](https://twitter.com/crafty)
 
-[Nick Butcher](https://twitter.com/crafty) did a super-dense but mind-blowing talk on Vector Drawables and Animated Vector Drawables. I wanted to switch resources to vector drawables in my apps for a very long time but it seemed so vast and a design job. Nick showed us that it is actually quite simple with the help of [Sketch](https://www.sketchapp.com/) (first time I hear about it) and [shape shifter](http://shapeshifter.design).
+[Nick Butcher](https://twitter.com/crafty) did a super-dense but mind-blowing talk on Vector Drawables and Animated Vector Drawables. I wanted to switch resources to vector drawables in my apps for a very long time but it seemed so complicated. Nick showed us that it is actually quite simple with the help of [Sketch](https://www.sketchapp.com/) (first time I hear about it) and [shape shifter](http://shapeshifter.design).
 
 {% twitter https://twitter.com/galex/status/923538096406302720 align=center %}
 
@@ -75,13 +75,13 @@ This talk was mostly inspiring. It's about Design principles applied to create A
 
 #### [Testing Android apps based on Dagger and RxJava](https://skillsmatter.com/skillscasts/10532-testing-android-apps-based-on-dagger-and-rxjava) by [Fabio Collini](https://twitter.com/fabioCollini)
 
-This talk seemed rich in information but I didn't manage to follow. RxJava and Dagger are both on my learning list for a long time. I tried to use Dagger but I didn't understand how to do that properly, yet. Actually, other Dependency Injection frameworks are popping lately like [Toothpick](https://github.com/stephanenicolas/toothpick) or [Kodein](https://github.com/SalomonBrys/Kodein) so I might give those a chance first.
+This talk seemed rich in information but I didn't manage to follow. RxJava and Dagger are both on my learning list for a long time. I tried to use Dagger but I didn't understand how to do that properly, yet. Actually, other Dependency Injection frameworks are popping lately like [Toothpick](https://github.com/stephanenicolas/toothpick), [Kodein](https://github.com/SalomonBrys/Kodein) or [Koin](https://github.com/Ekito/koin) so I might give those a chance too.
 
 {% twitter https://twitter.com/galex/status/923848118831108097 align=center %}
 
 #### [Becoming a Master Window Fitter](https://skillsmatter.com/skillscasts/10297-a-talk-by-chris-banes) by [Chris Banes](https://twitter.com/chrisbanes)
 
-The mains subject here was the **Window** on Android and the related subject of **shared element transitions**. I feel like shared element transitions are a new layer on top of our already complicated activities but I should still implement those as it can give a "wow effect" to the users.
+The mains subject here was the **Window** on Android and the related subject of **shared element transitions**. I feel like shared element transitions are a new layer on top of our already complicated activities but I should still implement those as it can add a nice "wow effect".
 
 {% twitter https://twitter.com/galex/status/923866069055483904 align=center %}
 
@@ -105,4 +105,4 @@ First full talk about [Kotlin](https://kotlinlang.org/), yay! Besides the nice t
 
 ## Conclusion
 
-[Here are all the videos of DroidconUK 2017](https://skillsmatter.com/conferences/8265-droidcon-london-2017#skillscasts). Droidcon London is a **Great** conference. I learned so much and it opens the mind to new concepts. I usually go back home full of ideas for new libraries or things to try. The high level of talks is totally worth it. I'll go back next year, for sure!
+[Here are all the videos of DroidconUK 2017](https://skillsmatter.com/conferences/8265-droidcon-london-2017#skillscasts). Droidcon London is a **Great** conference. I learned so much and it opens the mind to new concepts. I usually go back home full of ideas for new libraries or things to try. The high level of talks is totally worth it. I'll be back next year, for sure!
