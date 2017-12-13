@@ -6,10 +6,10 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Alex Gherschon's blog
+title: Alexander Gherschon's blog
 email: alexandre.gherschon@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Alexander Gherschon's Blog. You'll find here blog posts, (open-source) projects info and general programmer stuff.
+  Personal tech blog where I intend to talk about interesting things I learn along the way. 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://galex.co.il" # the base hostname & protocol for your site
 twitter_username: galex
