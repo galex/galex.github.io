@@ -4,6 +4,10 @@ title: Open Source
 permalink: /os/
 ---
 
+## Android Studio
+
+- [Name That Color]({{ site.url }}/namethatcolor/) Android Studio plugin to integrate [Name That Color](http://chir.ag/projects/name-that-color/) into Android Studio
+
 ### Android
 
 - [Talking Kotlin](https://github.com/talkingkotlin/mobile-app) Mobile app to listen to the talkingkotlin.com podcast. Contributions will be welcomed!
