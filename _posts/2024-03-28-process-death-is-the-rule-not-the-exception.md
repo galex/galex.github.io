@@ -63,11 +63,11 @@ To find out if your app suffers from poor **state restoration** management, depe
 override fun onCreate(savedInstanceState: Bundle?) {
   super.onCreate(savedInstanceState)
   // Test for arguments you sent to the fragment that are mandatory
-  if(arguments?.containsKey("id")?.not() == true) throw IllegalStateException("id parameter in screen $screenName not found but is mandatory")
+  if (arguments?.containsKey("id")?.not() == true) throw IllegalStateException("id parameter in screen $screenName not found but is mandatory")
   // Test for values you added in the savedInstanceState that are mandatory
-  if(savedInstanceState != null && savedInstanceState.containsKey("selectedBottomBarItem").not()) throw IllegalStateException("selectedBottomBarItem parameter  in screen $screenName not found")
+  if (savedInstanceState != null && savedInstanceState.containsKey("selectedBottomBarItem").not()) throw IllegalStateException("selectedBottomBarItem parameter  in screen $screenName not found")
   // Test for important parameters you manage in other places that this screen depends on
-  if(authManager.token == null) throw IllegalStateException("AuthManager should have gotten a valid token before accessing screen $screenName")
+  if (authManager.token == null) throw IllegalStateException("AuthManager should have gotten a valid token before accessing screen $screenName")
 }
 ```
 This way you will be notified if something goes wrong in your app.
