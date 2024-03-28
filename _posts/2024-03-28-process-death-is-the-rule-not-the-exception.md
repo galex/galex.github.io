@@ -44,13 +44,13 @@ Android reserves itself the right to **Kill The Process at any point** in the ba
 flowchart LR
   RunApp --> SwitchToAnotherApp --> AppGoesIntoBackground
   AppGoesIntoBackground --> AppLaunchedAgain
-  AppGoesIntoBackground --> ProcessKilldByAndroid --> AppLaunchedAgain
+  AppGoesIntoBackground --> ProcessKilledByAndroid --> AppLaunchedAgain
   AppLaunchedAgain --> AppGoesIntoForeground
 ```
 
 How is this different from what developers do? 
 
-In case of **Process Death** triggered by Android, the OS will keep the **state** of the application (as a Bundle) till the app will come back into the foreground and that is what is called **state restoration** that we developers absolutely need to take into account.
+In case of **Process Death** triggered by Android, the OS will keep the **state** of the application (as a Bundle) till the app will come back into the foreground, which is the mechanism this is commonly referred to as **state restoration**.
 
 Does it happen a lot? Not on our up-to-date latest Google Pixel or Samsung phone, that's for sure!
 
@@ -58,7 +58,7 @@ We can blindly think **Process Death** doesn't happen at all or enough to care, 
 
 ## How to find out Process Death issues?
 
-To find out if your app suffers from poor **state restoration** management, depending on how extreme you are allowed to be at your company, trigger a fatal/non-fatal crash/log event for each parameter in each screen which it depends on, directly or indirectly:
+To find out if your app suffers from poor **state restoration** management, depending on how extreme you are allowed to be at your company, I suggest triggering a fatal (or non-fatal) crash, or at least a log event for each parameter in each screen which it depends on, directly or indirectly:
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
   super.onCreate(savedInstanceState)
@@ -71,4 +71,3 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 This way you will be notified if something goes wrong in your app.
-
