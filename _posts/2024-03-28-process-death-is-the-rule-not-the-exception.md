@@ -72,5 +72,3 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ```
 This way you will be notified if something goes wrong in your app.
 
-Cheers! 
-
