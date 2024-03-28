@@ -58,7 +58,7 @@ We can blindly think **Process Death** doesn't happen at all or enough to care, 
 
 ## How to find out Process Death issues?
 
-To find out if your app suffers from poor **state restoration** management, depending on how extreme you are allowed to be at your company, trigger a fatal/non-fatal crash/log event for each parameter your screen depends on, directly or indirectly:
+To find out if your app suffers from poor **state restoration** management, depending on how extreme you are allowed to be at your company, trigger a fatal/non-fatal crash/log event for each parameter in each screen which it depends on, directly or indirectly:
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
   super.onCreate(savedInstanceState)
@@ -70,7 +70,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
   if(authManager.token == null) throw IllegalStateException("AuthManager should have gotten a valid token before accessing screen $screenName")
 }
 ```
-This way you will be notified if something goes wrong in your app and your users will be happy!
+This way you will be notified if something goes wrong in your app.
 
 Cheers! 
 
