@@ -6,13 +6,13 @@ categories: ["Android"]
 mermaid: true
 ---
 
-# Introduction
+## Introduction
 
 When you start a new job in an established company, you expect what is already in production to be working well, because it's in prod, right? Well, that's not always the case, unfortunately. 
 
 This is the story on how that app already in production was not setup correctly from the ground up and the lessons learned along the way to fix it!
 
-# The Wrong Setup
+## The Wrong Setup
 
 The special thing about that app is that it has a **hard gateway** meaning there's a signup/login flow, and only after logging in successfully, the user can land on the main screen, a dashboard.
 
@@ -70,7 +70,7 @@ After the user has logged-in, used the dashboard for a while, then switched to a
 
 In this case, only **MainActivity** exists on the activity stack (remember, **LoginActivity** was `finish()`'d) which **means we never go again through the Login flow!**
 
-# The Meh Patch
+## The Meh Patch
 
 One potential fix is to check if the user is logged-in in each screen but redirect the user back to the **LoginActivity**.
 
@@ -80,7 +80,7 @@ Deeplinks would also be broken if we would implement it this way.
 
 Meh.
 
-# The Right Fix
+## The Right Fix
 
 On Android, **Every Screen Is An Entry Point**.
 
@@ -130,7 +130,7 @@ flowchart LR
 ```
 > ℹ️ **DashboardFragment** awaits patiently on the back stack or wherever your navigation library decides put it in the meantime.
 
-# Conclusion
+## Conclusion
 
 We **have to think of every screen as being completely independent** of the app (and of any flow) so that it can always survive anything that is thrown at it.
 
