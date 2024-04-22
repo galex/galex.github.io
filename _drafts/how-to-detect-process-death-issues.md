@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to detect Process Death issues"
-tags: ["android", "process death", "detection"]
+tags: ["android", "process death", "detection", "reproduction", "find out"]
 categories: ["Android"]
 mermaid: true
 ---
@@ -42,15 +42,63 @@ On the other end, the `onViewCreated()` function of **ShowInfoFragment** contain
 // Getting the name from our Singleton
 binding.showName.text = getString(R.string.show_name, DataHolder.name ?: "null")
 ```
-Here is this demo app running for the first time:
+Let's run the app and see how it behaves in a "normal" flow:
 
 {% include video.html path="/assets/vids/detect-process-death-normal-flow.mp4" %}
 
-The name in **ShowInfoFragment** actually shows up even when a configuration change like orientation occurs!
+The value filled in **EnterNameFragment** show up in **ShowInfoFragment** event after a configuration change like changing the orientation of the device.
 
-Let's see now how this setup works when Process Death occurs:
+## Reproducing the problem
 
+What we want to do is to kill the app process, but **be careful to put the app in the background** first! 
 
+If the app is in the Foreground, it is considered a user-driven process kill.
+
+If the app is in the Background, killing the process triggers a **System-initiated Process Death** and that's exactly what we want to achieve here.
+
+You can do it manually on your phone, or you can do it via adb (this emulates pressing on the home button):
+```shell
+adb shell input keyevent 3
+```
+
+### Locally using Android Studio
+
+The option to trigger kill the process is available in `Logcat` by right-clicking anywhere and clicking on **Kill process**. 
+
+![Kill Process in Logcat](/assets/img/logcat-kill-process-death.png)
+
+### Locally using the Command Line
+
+You'll need to have **adb** on the command line, and then run the following command
+```shell
+adb shell am kill <your package name>
+```
+In this project demo the package name is `dev.galex.process.death.demo` 
+```shell
+adb shell am kill dev.galex.process.death.demo
+```
+
+## Anywhere using Maestro
+
+[Maestro](https://github.com/mobile-dev-inc/maestro) is a surprisingly easy tool to write end-to-end tests and is usually a tool you'd want your Continuous Integration server (GitHub Actions, Bitrise, etc.) to run periodically.
+
+Our current flow can be tested like this:
+
+```yaml
+appId: dev.galex.process.death.demo
+---
+- launchApp
+- tapOn:
+    id: "dev.galex.process.death.demo:id/enter_name"
+- inputText: "John Doe"
+- tapOn:
+    id: "dev.galex.process.death.demo:id/next"
+- assertVisible:
+    id: "dev.galex.process.death.demo:id/show_name"
+    text: "Name = John Doe"
+    enabled: true
+- stopApp
+```
 
 ## Conclusion
 
