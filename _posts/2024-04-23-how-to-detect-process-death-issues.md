@@ -6,6 +6,8 @@ categories: ["Android"]
 mermaid: true
 ---
 
+![Detective board](/assets/img/detective-board.png)
+
 Once we [realized what System-initiated Process Death is](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/) and learned how [an incorrect navigation setup](https://galex.dev/posts/every-screen-is-an-entry-point/) can completely screw up our app, it is very much time to talk about the different ways to detect those hidden issues!
 
 ## The Demo Setup
