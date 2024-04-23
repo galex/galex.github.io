@@ -6,8 +6,6 @@ categories: ["Android"]
 mermaid: true
 ---
 
-## Introduction
-
 
 ## Using Maestro
 

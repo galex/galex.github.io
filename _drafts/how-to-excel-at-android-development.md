@@ -20,9 +20,3 @@ Meaning, don't fight the Android OS. If you feel you're fighting it, you're doin
 
 ## Your Architecture Stack is Good
 
-If you know your architecture, you are good to go. It doesn't matter what architecture you're using, actually.
-Just make sure you understand it very well, and that's it! 
-
-
-
-## You shall 

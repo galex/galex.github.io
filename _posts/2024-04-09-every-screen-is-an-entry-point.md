@@ -6,8 +6,6 @@ categories: ["Android"]
 mermaid: true
 ---
 
-## Introduction
-
 When we start a new job in an established company, we expect what is already in production to be working well, because it's in prod, right? Well, that's not always the case, unfortunately. 
 
 This is the story on how that app already in production was not setup correctly from the ground up and the lessons learned along the way to fix it!
