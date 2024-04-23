@@ -152,7 +152,7 @@ To solve the specific problem here, the **name** value sent from **EnterNameFrag
 
 We've created, detected and fixed a real issue that is hiding in plain sight and is quite hard to come across when our mindset is in development mode.
 
-Because this is the reality of Android Development, **I strongly suggest** to always test **each screen** in **each flow** if our apps.
+Because this is the reality of Android Development, **I strongly suggest** to always test **each screen** in **each flow** of our apps.
 
 Following to this, I plan on writing soon about:
 
