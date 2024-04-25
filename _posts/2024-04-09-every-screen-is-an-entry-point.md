@@ -98,7 +98,7 @@ flowchart LR
   D[Process Death] -->|State Restoration| MainActivity
 ```
 
-Please pay attention to the fact that as we can't separate the flows in different activities, **LoginActivity** has been completely deleted.
+Please pay attention to the fact that as this app uses Jetpack Navigation with Fragments, **LoginActivity** was merged into **MainActivity** so that any screen can `navController.navigate()` to a new [nested graph](https://developer.android.com/guide/navigation/design/nested-graphs) called **login_graph**.
 
 Let's add an **OrdersFragment** that opens up from **DashboardFragment** when a button is clicked:
 
