@@ -1,15 +1,27 @@
 ---
 layout: post
-title:  "How to detect Process Death issues with Maestro"
-tags: ["android", "process death", "detection", "reproduction", "find out"]
-categories: ["Android"]
+title:  "How to detect Process Death issues with Appium"
+tags: ["android", "process death", "detection", "reproduction", "find out", "maestro"]
+categories: ["Android", "Process Death", "e2e"]
 mermaid: true
 ---
+
+![Detective board](/assets/img/robot-looking-for-bugs.png)
+
+Detecting System-initiated Process Death issues is difficult and time-consuming!
+
+It would be **so great** if we had a way to **automate** checking for those issues so that we'll free ourselves all this time.
+
+> ℹ️ This is the **4th** post on Process Death, and I invite you to read the previous ones before:
+> 1. [Process Death is the rule, not the exception!](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)
+> 2. [Every Screen is an Entry Point](https://galex.dev/posts/every-screen-is-an-entry-point/)
+> 3. [How to detect Process Death issues](https://galex.dev/posts/how-to-detect-process-death-issues/)
+> 4. [How to detect Process Death Issues with Appium]()
 
 
 ## Using Maestro
 
-[Maestro](https://github.com/mobile-dev-inc/maestro) is a surprisingly easy tool to write end-to-end tests and is usually a tool you'd want your Continuous Integration server (GitHub Actions, Bitrise, etc.) to run periodically.
+[Maestro](https://github.com/mobile-dev-inc/maestro) is quite new compared to [Appium](http://appium.io/docs/en/latest/) and is surprisingly easy tool to write end-to-end tests and is usually a tool you'd want your Continuous Integration server (GitHub Actions, Bitrise, etc.) to run periodically.
 
 Our current flow can be tested like this:
 

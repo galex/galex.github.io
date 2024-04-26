@@ -2,13 +2,17 @@
 layout: post
 title:  "How to detect Process Death issues"
 tags: ["android", "process death", "detection", "reproduction", "find out"]
-categories: ["Android"]
+categories: ["Android", "Process Death"]
 mermaid: true
 ---
 
 ![Detective board](/assets/img/detective-board.png)
 
 Once we [realized what System-initiated Process Death is](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/) and learned how [an incorrect navigation setup](https://galex.dev/posts/every-screen-is-an-entry-point/) can completely screw up our app, it is very much time to talk about the different ways to detect those hidden issues!
+
+> ℹ️ This is the **3rd** post on Process Death, and I invite you to read the previous ones before:
+> 1. [Process Death is the rule, not the exception!](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)
+> 2. [Every Screen is an Entry Point](https://galex.dev/posts/every-screen-is-an-entry-point/)
 
 ## The Demo Setup
 

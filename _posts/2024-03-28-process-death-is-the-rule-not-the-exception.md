@@ -2,7 +2,7 @@
 layout: post
 title:  "Process Death is the Rule, not the Exception!"
 tags: ["android", "process death", "state restoration", "user-driven", "system-initiated"]
-categories: ["Android"]
+categories: ["Android", "Process Death"]
 mermaid: true
 ---
 
@@ -43,7 +43,7 @@ That's when we can encounter the potential source of lurking issues, the **Syste
 Android, our loved OS, reserves itself the right to **Kill The Process at any point** in the background, and it will be completely transparent to the user:
 
 ```mermaid
-flowchart LR
+flowchart TD
   RunApp --> SwitchToAnotherApp --> AppGoesIntoBackground
   AppGoesIntoBackground --> AppLaunchedAgain
   AppGoesIntoBackground --> ProcessKilledByAndroid --> AppLaunchedAgain
@@ -52,7 +52,7 @@ flowchart LR
 
 How is this different from what developers do? 
 
-In case of **System-initiated Process Death**, the Android OS will keep the **state** of the application (as a Bundle) till the app will come back into the foreground, which is the mechanism this is commonly referred to as **state restoration**.
+In case of **System-initiated Process Death**, the Android OS will keep the **state** of the application (as a Bundle) till the app will come back into the foreground, which is the mechanism commonly referred to as **state restoration**.
 
 Does it happen a lot? Not on our up-to-date latest Google Pixel or Samsung phone, that's for sure!
 
