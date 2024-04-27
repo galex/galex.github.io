@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to detect Process Death issues with Appium"
-tags: ["android", "process death", "detection", "reproduction", "find out", "appium", "QA"]
+tags: ["android", "process death", "detection", "reproduction", "find out", "appium", "automation", "QA"]
 categories: ["Android", "Process Death"]
 mermaid: true
 ---
@@ -36,6 +36,10 @@ Then run the Appium server like this:
 ```shell
 appium --relaxed-security
 ```
+> ⚠️ `--relaxed-security` option is needed to be able to access adb commands directly.
+>
+> Depending on where your Automation CI runs, this could be problematic 🫤
+
 Be sure to have the apk of the app we're testing on your connected device.
 
 ## Appium Demo Project
@@ -124,7 +128,7 @@ Let's see what happens when we run this test:
 
 ![running-basic-happy-flow-appium-test-passes-in-IDE](/assets/img/run-basic-happy-flow-appium-test.png)
 
-It passes, as expected!
+It **succeeds**, as **expected**!
 
 The QA Team is happy, the Android devs are happy, we're all happy!
 
@@ -207,10 +211,12 @@ Running this test gives us the following result:
 
 ![running basic happy flow with process death appium test fails in IDE](/assets/img/run-basic-happy-flow-process-death-appium-test.png)
 
-It fails, as expected!
+It **fails**, as **expected**!
 
-The QA Team is happy, the Android devs are happy it got caught, we're all happy!
+The QA Team is happy, the Android devs are happy it got caught, and we can fix it, we're all happy!
 
 ## Conclusion
 
-We've **automated** finding **Process Death issues** using Appium!
+We've **automated** detecting **Process Death issues** using Appium!
+
+I'm still not done on the subject, stay tuned!
