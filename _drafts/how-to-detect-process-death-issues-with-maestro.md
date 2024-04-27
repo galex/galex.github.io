@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "How to detect Process Death issues with Appium"
-tags: ["android", "process death", "detection", "reproduction", "find out", "maestro"]
-categories: ["Android", "Process Death", "e2e"]
+title:  "How to detect Process Death issues with Maestro"
+tags: ["android", "process death", "detection", "reproduction", "find out", "maestro", "QA"]
+categories: ["Android", "Process Death"]
 mermaid: true
 ---
 
