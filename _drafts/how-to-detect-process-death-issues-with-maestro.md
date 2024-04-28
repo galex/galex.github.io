@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "How to detect Process Death issues with Maestro"
+title:  "Detecting Process Death issues with Maestro"
 tags: ["android", "process death", "detection", "reproduction", "find out", "appium", "automation", "QA"]
 categories: ["Android", "Process Death"]
 mermaid: true
 ---
 
-![Detective board](/assets/img/robot-looking-for-bugs.png)
+![Giant robot looking for bugs in a field of flowers](/assets/img/header-green-robot.png)
 
 Detecting System-initiated Process Death issues is difficult and time-consuming!
 

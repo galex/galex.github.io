@@ -6,6 +6,8 @@ categories: ["Android", "Process Death"]
 mermaid: true
 ---
 
+![Parent teaching his child about rules and boundaries](/assets/img/header-parent-talking-to-child.png)
+
 Once, I worked on an Android App where, from the start, **Process Death** was simply ignored. **Crazy, right?**
 
 But how come it is actually possible to **entirely miss this point** on Android, although there are [lots](https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-savedstate) of [hints](https://developer.android.com/topic/libraries/architecture/saving-states) everywhere in the Android APIs that it is indeed necessary?
