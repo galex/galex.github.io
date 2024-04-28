@@ -1,10 +1,32 @@
 #  The contact options.
 
-- type: github
-  icon: "fab fa-github"
+- type: linkedin
+  icon: 'fab fa-linkedin'
+  url: "https://www.linkedin.com/in/agherschon/"
+
+- type: mastodon
+  icon: 'fab fa-mastodon'
+  url:  "https://androiddev.social/@galex"
 
 - type: twitter
   icon: "fa-brands fa-x-twitter"
+  url: "https://twitter.com/galex"
+
+- type: github
+  icon: "fab fa-github"
+  url: "https://github.com/galex"
+
+- type: stack-overflow
+  icon: 'fab fa-stack-overflow'
+  url:  "https://stackoverflow.com/users/829711/galex"
+
+- type: facebook
+  icon: "fa-brands fa-facebook"
+  url: "https://www.facebook.com/alexandre.gherschon"
+
+- type: slack
+  icon: "fa-brands fa-slack"
+  url: "https://kotlinlang.slack.com/team/U5F0UDF35"
 
 - type: email
   icon: "fas fa-envelope"

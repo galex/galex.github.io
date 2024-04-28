@@ -14,9 +14,9 @@ timezone: Asia/Jerusalem
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Alexander Gherschon # the main title
+title: Alexander Gherschon
 
-tagline: Android Developer # it will display as the subtitle
+tagline: Passionate Android Developer
 
 description: >- # used by seo meta and the atom feed
   Sharing my tips & tricks about Android Development.
@@ -38,11 +38,9 @@ social:
   email: alexandre.gherschon@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/galex # change to your twitter homepage
-    - https://github.com/galex # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/agherschon/
+    - https://twitter.com/galex
+    - https://github.com/galex
+    - https://www.linkedin.com/in/agherschon
 
 google_site_verification: # fill in to your verification string
 
