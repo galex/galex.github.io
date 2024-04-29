@@ -212,14 +212,26 @@ We removed the manual saving and restoring of the `name` variable and added an I
 When a View has a proper id that will not change at runtime like a resource id, Android will save and restore its state automatically.
 Android does this with the call to `saveHierarchyState()` on the `Window` object in the `onSaveInstanceState` method of the `android.app.Activity` class:
 ```kotlin
-// In android.app.Activity class
+// Saving View Hierarchy In android.app.Activity class
 protected fun onSaveInstanceState(@NonNull outState: Bundle) {
     outState.putBundle(WINDOW_HIERARCHY_TAG, mWindow.saveHierarchyState())
-    // (...)
+    // ...
+}
+
+// Restoring View Hierachy in android.app.Activity class
+protected fun onRestoreInstanceState(@NonNull savedInstanceState: Bundle) {
+    if (mWindow != null) {
+        val windowState: Bundle = savedInstanceState.getBundle(WINDOW_HIERARCHY_TAG)
+        if (windowState != null) {
+            mWindow.restoreHierarchyState(windowState)
+        }
+    }
 }
 ````
+We can deduct that `saveHierarchyState()` works by building a Bundle that contains the state of all the Views in the Activity by building a tree of Bundles. Each Bundle represents the state of a View and is indexed by the View's ID.
+When the Activity is recreated, `restoreHierarchyState()` is called with the Bundle that contains the state of all the Views. It will restore the state of each View by their IDs.
 
-Now that we understand what is going on at the Activity level, let's see how it works with Fragments, ViewModels, and Jetpack Navigation.
+Now that we know this, let's see what how this happens on the other side of the mirror, inside [Views](#views).
 
 ### Views
 
