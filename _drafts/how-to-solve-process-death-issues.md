@@ -10,10 +10,10 @@ mermaid: true
 
 Process Death happens way more to our users than we think so let's review what are the tools the Android OS provides to counteract this extra complexity!
 
-**State Restoration** is the term we're searching for! We'll be looking at how Android expects to receive a **state** and how it gives that **state** back so we developers can properly restore our screens. 
+**State Management** is what we're looking for! We'll explore how Android expects to receive a **state** and how it gives that **state** back, so we can properly restore our screens. 
 
-By the way, **State Restoration** doesn't exit only for recovering from Process Death.
-**State Restoration** is also the same mechanism to recover from **Configuration Changes** like changing the language of the app, or just changing the orientation.
+It's important to note that State Management isn't solely for dealing with Process Death.
+It's als the mechanism we'll use to recover from **Configuration Changes** like switching the orientation of the device, or changing the [language of the app](https://developer.android.com/guide/topics/resources/app-languages).
 When an Android App is properly managing its state, it will recover from anything that is thrown at it!
 
 
@@ -25,194 +25,208 @@ When an Android App is properly managing its state, it will recover from anythin
 
 ## The Four Entry Points to an Android App
 
-There are and always will be **four Entry Points** to an Android App:
-- **Activities**
+There are **four Entry Points** to an Android App:
+- Activities
 - Services
 - Broadcast Receivers
 - Content Providers
 
-We're talking about restoring the **state** of our screens (also called UI State) so we'll be looking at the relevant Entry Point which are **Activities**.
-As Activities are our UI from the perspective of the Android OS, the **main mechanism** upon **State restoration** is built upon is that
-- When our process gets killed, Android will create a new [Bundle](https://developer.android.com/reference/android/os/Bundle) for each Activity and pass that Bundle to that Activity, so we can **add** values into that Bundle
-- When Android restores our app, it will pass the previously saved Bundle into each Activity, letting us **get** previously saved values from that Bundle
+When discussing the restoration of our screen's state, also known as UI State, our focus is primarily on Activities. 
+Activities serve as our user interface from the Android OS perspective. The main mechanism for state management is built around them. Here's how it works:
 
+- When our process is terminated, Android creates a new [Bundle](https://developer.android.com/reference/android/os/Bundle) for each Activity. This Bundle is passed to the Activity, allowing us to add values to it.
+- When Android revives our app, it provides the previously saved Bundle to each Activity. This allows us to retrieve the values we previously stored in the Bundle.
 ```mermaid 
 flowchart
   Activity -->|saveInBundle|d(AndroidOS)
  d(AndroidOS) -->|restoreFromBundle|Activity
 ```
 
-An important point is that **Activities** are the only Entry Points that can be restored. The other three Entry Points do not have (and do not need) such mechanism.
+That's the most important part to understand, as it forms the foundation for state preservation and restoration in all frameworks such as Views, Fragments, and Jetpack Compose.
+This mechanism is also employed by any third-party libraries you might be using, like Jetpack Navigation.
 
-Knowing this is the basis on which **State Restoration** is built, we can now look at how to save and restore the state of our Activities, Views, Fragments, and ViewModels.
-We'll now look at Views, Fragments and Jetpack Compose to see how they connect to this mechanism.
+To put it simply, the key understanding here is how these frameworks and libraries save and restore their state. So, the questions we need to ask ourselves are:
+- How does this framework save its state and how does it restore it? 
+- How does that library save its state and how does it restore it?
 
 ## Managing State Preservation and Restoration
 
-
 ### Activities
 
-In Android, activities have their own lifecycle and state. They can save and restore their state using the `onSaveInstanceState()` and `onCreate()`/ `onRestoreInstanceState()` methods:
+We'll create an Activity where the layout is created dynamically to raise a few interesting points.
 
 ```kotlin
-class MainActivity : AppCompatActivity() {
-    private lateinit var currentName: String? = null
-  
+class EnterNameActivity : AppCompatActivity() {
+
+    private var name: String? = null
+    private lateinit var editTextName: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        // Restore state members from saved instance
-        if (savedInstanceState != null) {
-            currentScore = savedInstanceState.getInt(STATE_SCORE)
-            currentLevel = savedInstanceState.getInt(STATE_LEVEL)
+        // editText created dynamically
+        editTextName = EditText(this).apply {
+            hint = "Enter name"
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
         }
+
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(editTextName)
+        }
+
+        setContentView(layout)
+
+        editTextName.addTextChangedListener { text ->
+            name = text.toString()
+        }
+    }
+}
+```
+
+Let's see how it behaves when the screen orientation changes:
+
+{% include video.html path="/assets/vids/activity-enter-name-value-lost.mp4" %}
+
+When the configuration change or Process Death occurs, the entered value disappears! 
+
+Let's fix this by saving and restoring the `name` variable.
+
+Activities have one main method to help us **save** their state:
+
+- `onSaveInstanceState(Bundle outState)`: This method is called before the Activity is destroyed. We can use it to save the state of the Activity.
+
+And two main methods to help us restore their state:
+
+- `onCreate(Bundle savedInstanceState)`: This method is called when the Activity is created. We can use it to restore the state of the Activity.
+- `onRestoreInstanceState(Bundle savedInstanceState)`: This method is called after the Activity is recreated. It is called after `onStart()` and before `onResume()`.
+
+> ℹ️ The `onRestoreInstanceState` method is not called if the Activity is created for the first time. It is only called when the Activity is recreated after being destroyed.
+> Using `onRestoreInstanceState()` is a matter of use cases. Usually, we'll use `onCreate()` to restore the state of the Activity.
+
+Let's modify the `EnterNameActivity` to save and restore the `name` variable:
+
+```kotlin
+class EnterNameActivity : AppCompatActivity() {
+
+    private var name: String? = null
+    private lateinit var editTextName: EditText
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // editText created dynamically
+        editTextName = EditText(this).apply {
+            hint = "Enter name"
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+        }
+
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(editTextName)
+        }
+
+        setContentView(layout)
+
+        editTextName.addTextChangedListener { text ->
+            name = text.toString()
+        }
+
+        // Restore the name value from savedInstanceState
+        name = savedInstanceState?.getString("name")
+        // Set the restored name value to the EditText
+        name?.let { editTextName.setText(it) }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        // Save the user's current game state
-        outState.run {
-            putInt(STATE_SCORE, currentScore)
-            putInt(STATE_LEVEL, currentLevel)
-        }
-
-        // Always call the superclass so it can save the view hierarchy state
         super.onSaveInstanceState(outState)
+        outState.putString("name", name)
     }
+}
+```
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        // Always call the superclass so it can restore the view hierarchy
-        super.onRestoreInstanceState(savedInstanceState)
+Here we used the `onSaveInstanceState` method to save the `name` variable and the `onCreate` method to restore it. 
+Let's see how it behaves now when the screen orientation changes, and also when Process Death occurs:
 
-        // Restore state members from saved instance
-        savedInstanceState.run {
-            currentScore = getInt(STATE_NAME)
-            currentLevel = getInt(STATE_LEVEL)
+{% include video.html path="/assets/vids/activity-enter-name-value-saved.mp4" %}
+
+We're all good! We created manually a View and managed its state at the Activity level. 
+
+But if we take a second to imagine having to do that for each View, I am pretty sure Android wouldn't have been adopted as much as it is today!
+
+**As soon as a View has an ID**, Android will save its state and restore it **automatically**.
+
+Let's declare an ID for the `EditText`:
+
+```xml
+<resources>
+    <id name="name_edit_text" />
+</resources>
+```
+
+And let's set it in the EditText:
+
+```kotlin
+class EnterNameActivity : AppCompatActivity() {
+
+    private var name: String? = null
+    private lateinit var editTextName: EditText
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // editText created dynamically
+        editTextName = EditText(this).apply {
+            hint = "Enter name"
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            // Setting the ID on the created View  
+            id = R.id.name_edit_text
+        }
+
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(editTextName)
+        }
+
+        setContentView(layout)
+
+        editTextName.addTextChangedListener { text ->
+            name = text.toString()
         }
     }
-
-    companion object {
-      private const val STATE_NAME = "nameState"
-    }  
 }
-
 ```
-In this code, we're saving the `myState` string in `onSaveInstanceState()`. Then, we're restoring these values in `onCreate()` and `onRestoreInstanceState()`. The `onCreate()` method is called when the activity is first created`, and `onRestoreInstanceState()` is called when the activity is being re-initialized from a previously saved state.
+We removed the manual saving and restoring of the `name` variable and added an ID that we created by declaring a resource id. Let's reproduce again Configuration Change and Process Death:
 
+{% include video.html path="/assets/vids/activity-enter-name-value-saved-automatically.mp4" %}
+
+When a View has a proper id that will not change at runtime like a resource id, Android will save and restore its state automatically.
+Android does this with the call to `saveHierarchyState()` on the `Window` object in the `onSaveInstanceState` method of the `android.app.Activity` class:
+```kotlin
+// In android.app.Activity class
+protected fun onSaveInstanceState(@NonNull outState: Bundle) {
+    outState.putBundle(WINDOW_HIERARCHY_TAG, mWindow.saveHierarchyState())
+    // (...)
+}
+````
+
+Now that we understand what is going on at the Activity level, let's see how it works with Fragments, ViewModels, and Jetpack Navigation.
 
 ### Views
 
-In Android, views also have their own lifecycle and state. They can save and restore their state using the `onSaveInstanceState()` and `onRestoreInstanceState()` methods. Here's an example of how you can do it:
-
-```kotlin
-class CustomView(context: Context, attrs: AttributeSet) : View(context, attrs) {
-    private var customState: String? = null
-
-    override fun onSaveInstanceState(): Parcelable {
-        val superState = super.onSaveInstanceState()
-        val savedState = SavedState(superState)
-        savedState.customState = this.customState
-        return savedState
-    }
-
-    override fun onRestoreInstanceState(state: Parcelable) {
-        if (state is SavedState) {
-            super.onRestoreInstanceState(state.superState)
-            this.customState = state.customState
-        } else {
-            super.onRestoreInstanceState(state)
-        }
-    }
-
-    private class SavedState : BaseSavedState {
-        var customState: String? = null
-
-        constructor(superState: Parcelable) : super(superState)
-
-        constructor(source: Parcel) : super(source) {
-            customState = source.readString()
-        }
-
-        override fun writeToParcel(out: Parcel, flags: Int) {
-            super.writeToParcel(out, flags)
-            out.writeString(customState)
-        }
-
-        companion object {
-            @JvmField
-            val CREATOR: Parcelable.Creator<SavedState> = object : Parcelable.Creator<SavedState> {
-                override fun createFromParcel(source: Parcel): SavedState = SavedState(source)
-                override fun newArray(size: Int): Array<SavedState?> = arrayOfNulls(size)
-            }
-        }
-    }
-}
-```
-
 ### Fragments
-
-Fragments, like activities, can save their state in a Bundle during `onSaveInstanceState()`. This state can then be restored in `onCreate()`, `onCreateView()`, or `onActivityCreated()`.
-
-```kotlin
-class MyFragment : Fragment() {
-    private var myState: String? = null
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("myState", myState)
-    }
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        myState = savedInstanceState?.getString("myState")
-    }
-}
-```
 
 ### ViewModels
 
-ViewModels are a part of the Android Architecture Components and are designed to store and manage UI-related data in a lifecycle conscious way. They survive configuration changes. However, they do not survive process death. For that, you need to combine them with `onSaveInstanceState()`.
+### Official documentation
 
-```kotlin
-class MyViewModel : ViewModel() {
-    private var myState: String? = null
-
-    fun saveState(outState: Bundle) {
-        outState.putString("myState", myState)
-    }
-
-    fun restoreState(savedInstanceState: Bundle?) {
-        myState = savedInstanceState?.getString("myState")
-    }
-}
-```
-
-### Jetpack Compose
-
-In Jetpack Compose, you can use the `rememberSaveable` function to automatically save and restore the state across process death.
-
-```kotlin
-@Composable
-fun MyComposable() {
-    var myState by rememberSaveable { mutableStateOf("initial value") }
-}
-```
-
-## Official documentation
-
-The official Android documentation provides a comprehensive guide on how to save and restore the state of an app. Here are some useful links:
-
-- [Saving and restoring activity state](https://developer.android.com/topic/libraries/architecture/saving-states)
-- [Saving UI States](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate)
-- [Handling Lifecycles with Lifecycle-Aware Components](https://developer.android.com/topic/libraries/architecture/lifecycle)
-- [Jetpack Compose state and Jetpack libraries](https://developer.android.com/jetpack/compose/state#state-and-jetpack-libraries)
-
-Other useful resources include:
-- [The Top 3 State Management Mistakes On Android](https://www.youtube.com/watch?v=JfCivo5qJkI) by [Philipp Knacker](https://twitter.com/plcoding)
-
-
-Conclusion
-
-> ℹ️ **State Restoration** doesn't exit only for recovering from Process Death.
-> **State Restoration** is also the same mechanic to recover from **Configuration Changes** like changing the language of the app, or just changing the orientation.
-> When an Android App is properly managing its state, it will recover from anything that is thrown at it!
+### Conclusion

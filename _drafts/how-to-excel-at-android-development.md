@@ -14,7 +14,7 @@ I found out over the years that excellent Android Developers are the ones that a
 
 Meaning, don't fight the Android OS. If you feel you're fighting it, you're doing something wrong.
 
-## Leave Navigation Logic in the UI
+## Navigation Data and Navigation Logic is part of the UI
 
 ## Respect The Lifecycle
 
