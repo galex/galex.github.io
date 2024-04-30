@@ -4,6 +4,7 @@ title:  "Process Death is the Rule, not the Exception!"
 tags: ["android", "process death", "state restoration", "user-driven", "system-initiated"]
 categories: ["Android", "Process Death"]
 mermaid: true
+comments: true
 ---
 
 ![Parent teaching his child about rules and boundaries](/assets/img/header-parent-talking-to-child.png)

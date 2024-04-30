@@ -3,6 +3,7 @@ layout: post
 title:  "Jetpack Navigation is actually OK"
 tags: ["android", "navigation", "jetpack"]
 categories: ["Android"]
+comments: true
 ---
 
 # Introduction

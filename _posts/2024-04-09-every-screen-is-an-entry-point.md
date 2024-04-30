@@ -2,7 +2,7 @@
 layout: post
 title:  "Every Screen is an Entry Point"
 tags: ["android", "navigation", "process death"]
-categories: ["Android", "Process Death"]
+categories: ["Android", "Navigation"]
 mermaid: true
 ---
 
@@ -11,9 +11,6 @@ mermaid: true
 When we start a new job in an established company, we expect what is already in production to be working well, because it's in prod, right? Well, that's not always the case, unfortunately. 
 
 This is the story on how that app already in production was not setup correctly from the ground up and the lessons learned along the way to fix it!
-
-> ℹ️ This is the **2nd** post on Process Death, and I invite you to read the previous one before:
-> 1. [Process Death is the rule, not the exception!](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)
 
 ## The Wrong Setup
 

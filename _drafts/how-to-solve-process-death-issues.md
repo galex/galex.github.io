@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Solving Process Death issues"
-tags: ["android", "process death", "solution", "state", "restoration"]
-categories: ["Android", "Process Death"]
+tags: ["android", "process death", "solution", "state", "saveState", "restoreState"]
+categories: ["Android", "State Management"]
 mermaid: true
+comments: true
 ---
 
 ![People holding phones in a party](/assets/img/header-beach.png)
@@ -15,13 +16,6 @@ Process Death happens way more to our users than we think so let's review what a
 It's important to note that State Management isn't solely for dealing with Process Death.
 It's als the mechanism we'll use to recover from **Configuration Changes** like switching the orientation of the device, or changing the [language of the app](https://developer.android.com/guide/topics/resources/app-languages).
 When an Android App is properly managing its state, it will recover from anything that is thrown at it!
-
-
-> ℹ️ This is the **5th** and last installment on Process Death! Here are the previous posts if you missed them:
-> 1. [Process Death is the rule, not the exception!](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)
-> 2. [Every Screen is an Entry Point](https://galex.dev/posts/every-screen-is-an-entry-point/)
-> 3. [Detecting Process Death issues](https://galex.dev/posts/how-to-detect-process-death-issues/)
-> 4. [Detecting Process Death Issues with Appium]()
 
 ## The Four Entry Points to an Android App
 

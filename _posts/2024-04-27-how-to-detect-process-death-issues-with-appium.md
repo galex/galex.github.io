@@ -4,11 +4,12 @@ title:  "Detecting Process Death issues with Appium"
 tags: ["android", "process death", "detection", "reproduction", "find out", "appium", "automation", "QA"]
 categories: ["Android", "Process Death"]
 mermaid: true
+comments: true
 ---
 
 ![Giant robot looking for bugs in a field of flowers](/assets/img/header-red-robot.png)
 
-Manually detecting Process Death issues is not easy and definitely time-consuming. 
+[As we understood in the previous post](https://galex.dev/posts/how-to-detect-process-death-issues/), manually detecting Process Death issues is not easy and definitely time-consuming. 
 
 Plus, a change of navigation or architecture could potentially break our app and even if we took care of those issues before, they could re-surface. Wouldn't it be ideal if we could take care of this once and for all? 
 

@@ -2,7 +2,8 @@
 layout: post
 title:  "How to excel at Android Development"
 tags: ["android", "programming", "work"]
-categories: ["Work"]
+categories: ["Android", "Career"]
+comments: true
 ---
 
 ## Introduction
