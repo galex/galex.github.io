@@ -97,7 +97,8 @@ comments:
     repo_id: "R_kgDOLk7G-w"
     category: "Comments"
     category_id: "DIC_kwDOLk7G-84CfCeZ"
-    mapping: "title"
+    mapping: "pathname"
+    strict: 1
     input_position: "top"
     reactions_enabled: 1
 
