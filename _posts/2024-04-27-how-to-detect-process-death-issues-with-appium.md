@@ -13,12 +13,7 @@ comments: true
 
 Plus, a change of navigation or architecture could potentially break our app and even if we took care of those issues before, they could re-surface. Wouldn't it be ideal if we could take care of this once and for all? 
 
-[Appium](http://appium.io/docs/en/latest/) is a end-to-end (e2e) automation tool that is widely used at companies investing in their mobile app properly, so let's check how it can help us detect the [Process Death issue](https://galex.dev/posts/how-to-detect-process-death-issues/) present in our [demo app](https://github.com/galex/process-death-demo-project). 
-
-> ℹ️ This is the **4th** post on Process Death, and I invite you to read the previous ones before:
-> 1. [Process Death is the rule, not the exception!](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)
-> 2. [Every Screen is an Entry Point](https://galex.dev/posts/every-screen-is-an-entry-point/)
-> 3. [How to detect Process Death issues](https://galex.dev/posts/how-to-detect-process-death-issues/)
+[Appium](http://appium.io/docs/en/latest/) is an end-to-end (e2e) automation tool that is widely used at companies investing in their mobile app properly, so let's check how it can help us detect the [Process Death issue](https://galex.dev/posts/how-to-detect-process-death-issues/) present in our [demo app](https://github.com/galex/process-death-demo-project). 
 
 ## Appium Setup
 
