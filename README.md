@@ -1,1 +1,1 @@
-# Alexander Gherschon's Android Tech Blog
+https://galex.dev
