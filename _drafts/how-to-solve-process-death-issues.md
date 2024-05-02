@@ -9,13 +9,15 @@ comments: true
 
 ![People holding phones in a party](/assets/img/header-beach.png)
 
-Let's review what are the tools the Android OS provides us developers to fix Process Death!
+**State Management** is what we're looking for! 
 
-**State Management** is what we're looking for! We'll explore how Android expects to receive a **state** and how it gives that **state** back, so we can properly restore our screens. 
+We'll now explore how Android expects to receive a **state** and how it gives that **state** back, so we can properly restore our screens. 
 
-It's important to note that State Management isn't solely for dealing with Process Death.
-It's als the mechanism we'll use to recover from **Configuration Changes** like switching the orientation of the device, or changing the [language of the app](https://developer.android.com/guide/topics/resources/app-languages).
+It's important to note that **State Management** isn't solely for dealing with [System-initiated Process Death](/posts/process-death-is-the-rule-not-the-exception).
+It's als the mechanism we'll use to recover from **Configuration Changes** like switching the orientation of the device, or changing [the app language](https://developer.android.com/guide/topics/resources/app-languages).
 When an Android App is properly managing its state, it will recover from anything that is thrown at it!
+
+> ⚠️ We should save via **State Management** any data that is necessary to restore the screen to its previous state that **is not already saved in Shared Preferences, a Database, or a remote Server**.
 
 ## The Four Entry Points to an Android App
 
@@ -38,6 +40,8 @@ flowchart
 
 That's the most important part to understand, as it forms the foundation for state preservation and restoration in all frameworks such as Views, Fragments, and Jetpack Compose.
 This mechanism is also employed by any third-party libraries you might be using, like Jetpack Navigation.
+
+> ⚠️ The three other Entry Points have no built-in mechanism for state preservation and restoration.
 
 ## Managing State Preservation and Restoration
 
@@ -93,7 +97,7 @@ The easiest way to save state in a View is using a Bundle, as it implements Parc
         }
     }
 ```
-And restoring that state is also easy, using the bundle we put in `onSaveInstanceState`:
+And to restore that state we'll use the bundle we put in `onSaveInstanceState`:
 
 ```kotlin
     override fun onRestoreInstanceState(state: Parcelable?) {
@@ -105,6 +109,9 @@ And restoring that state is also easy, using the bundle we put in `onSaveInstanc
         }
     }
 ```
+
+Check out a deeper dive on [State Management in Views](/posts/state-management-in-views) for more details.
+
 ### Fragments
 
 
