@@ -9,11 +9,11 @@ comments: true
 
 ![Giant robot looking for bugs in a field of flowers](/assets/img/header-red-robot.png)
 
-[As we understood in the previous post](https://galex.dev/posts/how-to-detect-process-death-issues/), manually detecting Process Death issues is not easy and definitely time-consuming. 
+[As we understood in the previous post](/posts/how-to-detect-process-death-issues/), manually detecting Process Death issues is not easy and definitely time-consuming. 
 
 Plus, a change of navigation or architecture could potentially break our app and even if we took care of those issues before, they could re-surface. Wouldn't it be ideal if we could take care of this once and for all? 
 
-[Appium](http://appium.io/docs/en/latest/) is an end-to-end (e2e) automation tool that is widely used at companies investing in their mobile app properly, so let's check how it can help us detect the [Process Death issue](https://galex.dev/posts/how-to-detect-process-death-issues/) present in our [demo app](https://github.com/galex/process-death-demo-project). 
+[Appium](http://appium.io/docs/en/latest/) is an end-to-end (e2e) automation tool that is widely used at companies investing in their mobile app properly, so let's check how it can help us detect the [Process Death issue](/posts/how-to-detect-process-death-issues/) present in our [demo app](https://github.com/galex/process-death-demo-project). 
 
 ## Appium Setup
 

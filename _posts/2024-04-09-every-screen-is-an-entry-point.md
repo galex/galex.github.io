@@ -49,9 +49,9 @@ It sounds OK, right? Except it wasn't.
 
 Issues reported from **production** started to pour in telling us that all the data of that Dashboard screen was sometimes missing! Clicking on anything there just crashed immediately the app! **How come?** 
 
-After a long and deep investigation, we found out the root cause of the issue was the **[System-initiated Process Death](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)** mechanism. If **Process Death** is ignored, Android development is so much easier, but our app doesn't really work! 
+After a long and deep investigation, we found out the root cause of the issue was the **[System-initiated Process Death](/posts/process-death-is-the-rule-not-the-exception/)** mechanism. If **Process Death** is ignored, Android development is so much easier, but our app doesn't really work! 
 
-When **[System-initiated Process Death](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)** is correctly taken into account, the flow looks like the following:
+When **[System-initiated Process Death](/posts/process-death-is-the-rule-not-the-exception/)** is correctly taken into account, the flow looks like the following:
 
 ```mermaid
 flowchart LR
@@ -136,4 +136,4 @@ We **have to think of every screen as being completely independent** of the app 
 
 > ⚠️ I deliberately didn't write any technical solution about some specific library because this has nothing to do with any navigation library, but it is primordial you understand **what are the tools** your navigation library gives you to solve the issue and even then it's possible to miss the point, but that's material for a whole other post. 
 
-Stay safe out there and be conscious about [System-initiated Process Death](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)!
+Stay safe out there and be conscious about [System-initiated Process Death](/posts/process-death-is-the-rule-not-the-exception/)!

@@ -9,7 +9,7 @@ comments: true
 
 ![Detective board](/assets/img/header-detective-board.png)
 
-Once we [realized what System-initiated Process Death is](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/) and learned how [an incorrect navigation setup](https://galex.dev/posts/every-screen-is-an-entry-point/) can completely screw up our app, it is very much time to talk about the different ways to detect those hidden issues!
+Once we [realized what System-initiated Process Death is](/posts/process-death-is-the-rule-not-the-exception/) and learned how [an incorrect navigation setup](/posts/every-screen-is-an-entry-point/) can completely screw up our app, it is very much time to talk about the different ways to detect those hidden issues!
 
 ## The Demo Setup
 
@@ -132,7 +132,7 @@ Here are the steps of what we can see in this video:
 
 **This is the exact behavior we were looking for!**
 
-As the process is killed, our **DataHolder** Singleton dies as well and as we know that [Every Screen is an Entry Point](https://galex.dev/posts/every-screen-is-an-entry-point/), Android restores **ShowInfoFragment** directly which gets the **name** value from a freshly created Singleton that is actually empty, which is why we now see `Name = null` when our app re-opens.
+As the process is killed, our **DataHolder** Singleton dies as well and as we know that [Every Screen is an Entry Point](/posts/every-screen-is-an-entry-point/), Android restores **ShowInfoFragment** directly which gets the **name** value from a freshly created Singleton that is actually empty, which is why we now see `Name = null` when our app re-opens.
 
 ```mermaid
 flowchart TD
@@ -157,7 +157,7 @@ Because this is the reality of Android Development, **I strongly suggest** to al
 
 Following to this, I plan on writing soon about:
 
-- How to automate testing for [System-initiated Process Death](https://galex.dev/posts/process-death-is-the-rule-not-the-exception/)
+- How to automate testing for [System-initiated Process Death](/posts/process-death-is-the-rule-not-the-exception/)
 - All the State Restoration tools provided by Android OS
 
 Stay tuned!
