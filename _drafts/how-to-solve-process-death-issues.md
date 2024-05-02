@@ -41,8 +41,6 @@ This mechanism is also employed by any third-party libraries you might be using,
 
 ## Managing State Preservation and Restoration
 
-There is a lot to cover on the subject, so we'll need to break it down into smaller parts, but here's a TL;DR: of each part.
-
 ### Activities
 
 Android provides one main method to help us save the state of an Activity:
@@ -119,6 +117,12 @@ And restoring that state is also easy, using the bundle we put in `onSaveInstanc
 ### Conclusion
 
 Please check each deep dive in each subject as there is too much to for one post to cover!
+
+- [State Management in Activities](/posts/state-management-in-activities)
+- [State Management in Views](/posts/state-management-in-views)
+- [State Management in Fragments](/posts/state-management-in-fragments)
+- [State Management in ViewModels](/posts/state-management-in-viewmodels)
+- [State Management in Jetpack Compose](/posts/state-management-in-jetpack-compose)
 
 I hope you find this useful in your Android Development Journey! 🚀
 
