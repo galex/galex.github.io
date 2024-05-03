@@ -9,12 +9,12 @@ comments: true
 
 ![People holding phones in a party](/assets/img/header-beach.png)
 
-**State Management** is what we're looking for! 
-
 We'll now explore how Android expects to receive a **state** and how it gives that **state** back, so we can properly restore our screens. 
+This whole mechanism is called **State Management** or **State Preservation and Restoration**.
 
-It's important to note that **State Management** isn't solely for dealing with [System-initiated Process Death](/posts/process-death-is-the-rule-not-the-exception).
-It's als the mechanism we'll use to recover from **Configuration Changes** like switching the orientation of the device, or changing [the app language](https://developer.android.com/guide/topics/resources/app-languages).
+It's important to note that **State Management** isn't there to deal only with [System-initiated Process Death](/posts/process-death-is-the-rule-not-the-exception).
+It's also the same mechanism we'll use to recover from **Configuration Changes** like switching the orientation of the device, or changing [the app language](https://developer.android.com/guide/topics/resources/app-languages).
+
 When an Android App is properly managing its state, it will recover from anything that is thrown at it!
 
 > ⚠️ We should save via **State Management** any data that is necessary to restore the screen to its previous state that **is not already saved in Shared Preferences, a Database, or a remote Server**.
@@ -30,8 +30,8 @@ There are **four Entry Points** to an Android App:
 When discussing the restoration of our screen's state, also known as UI State, our focus is primarily on Activities. 
 Activities serve as our user interface from the Android OS perspective. The main mechanism for state management is built around them. Here's how it works:
 
-- When our process is terminated, Android creates a new [Bundle](https://developer.android.com/reference/android/os/Bundle) for each Activity. This Bundle is passed to the Activity, allowing us to add values to it.
-- When Android revives our app, it provides the previously saved Bundle to each Activity. This allows us to retrieve the values we previously stored in the Bundle.
+- When our process is terminated, Android creates a new [Bundle](https://developer.android.com/reference/android/os/Bundle) for each Activity. This Bundle is passed to the Activity, allowing us to add values to it
+- When Android revives our app, it provides the previously saved Bundle to each Activity. This allows us to retrieve the values we previously stored in the Bundle
 
 ```mermaid 
 flowchart
@@ -39,10 +39,10 @@ flowchart
  d(AndroidOS) -->|restoreFromBundle|Activity
 ```
 
-That's the most important part to understand, as it forms the foundation for state preservation and restoration in all frameworks such as Views, Fragments, and Jetpack Compose.
-This mechanism is also employed by any third-party libraries you might be using, like Jetpack Navigation.
+That's the most **important part to understand**, as it forms the foundation for state preservation and restoration in all Android frameworks such as Views, Fragments, and Jetpack Compose.
+This mechanism is also employed by any third-party libraries we might be using, like [Jetpack Navigation](https://developer.android.com/guide/navigation).
 
-> ⚠️ The three other Entry Points have no built-in mechanism for state preservation and restoration.
+> ℹ️ The three other Entry Points have no built-in mechanism for state preservation and restoration.
 
 ## Managing State Preservation and Restoration
 
@@ -79,9 +79,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-> ⚠️ Activities save all the View Hierarchy (for every View with a Resource ID) and all its Fragments states automatically.
+> ℹ️ Activities save all the View Hierarchy (for every View with a Resource ID) and all its Fragments states automatically.
 
-If you are hungry for more, here's a deeper dive on [State Management in Activities](/posts/state-management-in-activities).
+For more in-depth knowledge, consider reading the detailed article on [State Management in Activities](/posts/state-management-in-activities).
 
 ### Views
 

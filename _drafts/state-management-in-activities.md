@@ -7,18 +7,18 @@ mermaid: true
 comments: true
 ---
 
-![People holding phones in a party](/assets/img/header-beach.png)
+![Standing in front of a big main entrance](/assets/img/header-big-entrance.png)
 
 Activities are the Entry Point to an Android App. 
 They are the first thing the user sees when they open the app. 
 They are also the first thing the user sees when they return to the app after a long time. 
 
 When the user leaves the app, the Android OS can decide to terminate the app's process to free up resources. This is called **Process Death**. 
-When the user returns to the app, the Android OS can decide to revive the app. This is called **Process Revival**.
-When the Android OS revives the app, it will try to restore the state of the app as much as possible. This is called **State Restoration**.
+When the user returns to the app, the Android OS can decide to revive the app.
+When the Android OS revives the app after the user reopens it, it will try to restore the state of the app as much as possible. This is called **State Restoration**.
 
 
-### State Management in Activities
+## No State Management
 
 We'll create an Activity where the layout is created dynamically to raise a few interesting points.
 
@@ -54,6 +54,9 @@ class EnterNameActivity : AppCompatActivity() {
 }
 ```
 
+We created an `EditText` dynamically and added a `TextWatcher` to it to save the entered value in the `name` variable. 
+This `EditText` is created dynamically, and it doesn't have an ID.
+What happens when a View doesn't have an ID?
 Let's see how it behaves when the screen orientation changes:
 
 {% include video.html path="/assets/vids/activity-enter-name-value-lost.mp4" %}
@@ -64,15 +67,17 @@ Let's fix this by saving and restoring the `name` variable.
 
 Activities have one main method to help us **save** their state:
 
-- `onSaveInstanceState(Bundle outState)`: This method is called before the Activity is destroyed. We can use it to save the state of the Activity.
+- `onSaveInstanceState(Bundle outState)`: This method is called before the Activity is destroyed, so we can use it to save the state of the Activity
 
 And two main methods to help us restore their state:
 
-- `onCreate(Bundle savedInstanceState)`: This method is called when the Activity is created. We can use it to restore the state of the Activity.
-- `onRestoreInstanceState(Bundle savedInstanceState)`: This method is called after the Activity is recreated. It is called after `onStart()` and before `onResume()`.
+- `onCreate(Bundle savedInstanceState)`: This method is called when the Activity is created, so then we can use it to restore the state of the Activity
+- `onRestoreInstanceState(Bundle savedInstanceState)`: This method is called after the Activity is recreated. It is called after `onStart()` and before `onResume()`
 
 > ℹ️ The `onRestoreInstanceState` method is not called if the Activity is created for the first time. It is only called when the Activity is recreated after being destroyed.
 > Using `onRestoreInstanceState()` is a matter of use cases. Usually, we'll use `onCreate()` to restore the state of the Activity.
+
+## Manual State Management
 
 Let's modify the `EnterNameActivity` to save and restore the `name` variable:
 
@@ -126,8 +131,9 @@ Let's see how it behaves now when the screen orientation changes, and also when 
 We're all good! We created manually a View and managed its state at the Activity level. 
 
 But if we take a second to imagine having to do that for each View, I am pretty sure Android wouldn't have been adopted as much as it is today!
+**When a View has an ID**, Android will save its state and restore it **automatically**.
 
-**As soon as a View has an ID**, Android will save its state and restore it **automatically**.
+## Automatic View State Management
 
 Let's declare an ID for the `EditText`:
 
@@ -195,40 +201,16 @@ protected fun onRestoreInstanceState(@NonNull savedInstanceState: Bundle) {
     }
 }
 ````
-We can deduct that `saveHierarchyState()` works by building a Bundle that contains the state of all the Views in the Activity by building a tree of Bundles. Each Bundle represents the state of a View and is indexed by the View's ID.
+We can deduct that `saveHierarchyState()` works by building a Bundle that contains the state of all the Views in the Activity by building a map of Bundles. Each Bundle represents the state of a View and is indexed by the View's ID.
 When the Activity is recreated, `restoreHierarchyState()` is called with the Bundle that contains the state of all the Views. It will restore the state of each View by their IDs.
 
-Now that we know this, let's see what how this happens on the other side of the mirror, inside [Views](#views).
+## Conclusion
 
-### Views
+We learned how to save and restore the state of an Activity manually. 
+We also learned how Android saves and restores the state of Views automatically when they have a proper ID.
 
-Let's create a very simple Bottom Bar View that will contain a few buttons:
+Feel free to comment below if you have any questions!
 
-```kotlin
-class BottomBarView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
+By the way, I'm also on [Twitter](https://twitter.com/galex) and [LinkedIn](https://www.linkedin.com/in/agherschon/), so feel free to connect there too!
 
-    private var icon1: ImageView
-    private var icon2: ImageView
-    private var icon3: ImageView
-    private var selectedIconId: Int = R.id.home
-
-    init {
-        orientation = HORIZONTAL
-        icon1 = ImageView(context).apply { id = R.id.home; setImageResource(R.drawable.ic_home) }.also { addView(it) }
-        addView(Space(context).apply { weightSum = 1F })
-        icon2 = ImageView(context).apply { id = R.id.account; setImageResource(R.drawable.ic_account) }.also { addView(it) }
-        addView(Space(context).apply { weightSum = 1F })
-        icon3 = ImageView(context).apply { id = R.id.settings; setImageResource(R.drawable.ic_settings) }.also { addView(it) }
-    }
-
-// Other methods to handle user interaction and update the state of the icons...
-
-```
-
-### Fragments
-
-### ViewModels
-
-### Official documentation
-
-### Conclusion
+Stay tuned for more Android State Management deep dives! 🚀

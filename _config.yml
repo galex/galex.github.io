@@ -26,10 +26,10 @@ description: >- # used by seo meta and the atom feed
 url: "https://galex.dev"
 
 github:
-  username: galex # change to your github username
+  username: galex
 
 twitter:
-  username: galex # change to your twitter username
+  username: galex
 
 social:
   # Change to your full name.
