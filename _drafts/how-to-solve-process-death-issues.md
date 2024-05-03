@@ -32,6 +32,7 @@ Activities serve as our user interface from the Android OS perspective. The main
 
 - When our process is terminated, Android creates a new [Bundle](https://developer.android.com/reference/android/os/Bundle) for each Activity. This Bundle is passed to the Activity, allowing us to add values to it.
 - When Android revives our app, it provides the previously saved Bundle to each Activity. This allows us to retrieve the values we previously stored in the Bundle.
+
 ```mermaid 
 flowchart
   Activity -->|saveInBundle|d(AndroidOS)
@@ -62,20 +63,20 @@ And two main methods to help us restore their state:
 Saving a State in an Activity is as simple as adding values to the `outState` Bundle:
 
 ```kotlin
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("name", name)
-    }
+override fun onSaveInstanceState(outState: Bundle) {
+    super.onSaveInstanceState(outState)
+    outState.putString("name", name)
+}
 ```
 And restoring it is as simple as retrieving the values from the `savedInstanceState` Bundle:
 
 ```kotlin
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (savedInstanceState != null) {
-            name = savedInstanceState.getString("name")
-        }
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    if (savedInstanceState != null) {
+        name = savedInstanceState.getString("name")
     }
+}
 ```
 
 > ⚠️ Activities save all the View Hierarchy (for every View with a Resource ID) and all its Fragments states automatically.
@@ -90,31 +91,69 @@ To do so, Views can override the `onSaveInstanceState()` and `onRestoreInstanceS
 The easiest way to save state in a View is using a Bundle, as it implements Parcelable:
 
 ```kotlin
-    override fun onSaveInstanceState(): Parcelable? {
-        return Bundle().apply {
-            putParcelable("superState", super.onSaveInstanceState())
-            putInt("count", count)
-        }
+override fun onSaveInstanceState(): Parcelable? {
+    return Bundle().apply {
+        putParcelable("superState", super.onSaveInstanceState())
+        putInt("count", count)
     }
+}
 ```
 And to restore that state we'll use the bundle we put in `onSaveInstanceState`:
 
 ```kotlin
-    override fun onRestoreInstanceState(state: Parcelable?) {
-        if (state is Bundle) {
-            count = state.getInt("count")
-            super.onRestoreInstanceState(state.getParcelable("superState"))
-        } else {
-            super.onRestoreInstanceState(state)
-        }
+override fun onRestoreInstanceState(state: Parcelable?) {
+    if (state is Bundle) {
+        count = state.getInt("count")
+        super.onRestoreInstanceState(state.getParcelable("superState"))
+    } else {
+        super.onRestoreInstanceState(state)
     }
+}
 ```
 
 Check out a deeper dive on [State Management in Views](/posts/state-management-in-views) for more details.
 
 ### Fragments
 
+Fragments, like Activities, have a built-in mechanism for saving and restoring their state. They provide methods very similar to Activities:
 
+The `onSaveInstanceState(Bundle outState)` method is called before the Fragment is destroyed:
+
+```kotlin
+override fun onSaveInstanceState(outState: Bundle) {
+    super.onSaveInstanceState(outState)
+    outState.putString("name", name)
+}
+```
+
+And as with Activities, we have two functions with similar purpose to restore the state:
+
+- `onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)`
+- `onViewCreated(view: View, savedInstanceState: Bundle?)`
+
+Using those looks like this:
+
+```kotlin
+override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    if (savedInstanceState != null) {
+        name = savedInstanceState.getString("name")
+    }
+    return inflater.inflate(R.layout.fragment_name, container, false)
+}
+```
+
+And for `onViewCreated`:
+
+```kotlin
+override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    if (savedInstanceState != null) {
+        name = savedInstanceState.getString("name")
+    }
+}
+```
+
+For a deeper dive on [State Management in Fragments](/posts/state-management-in-fragments), check out the post!
 
 ### ViewModels
 
@@ -123,7 +162,7 @@ Check out a deeper dive on [State Management in Views](/posts/state-management-i
 
 ### Conclusion
 
-Please check each deep dive in each subject as there is too much to for one post to cover!
+Please check each deep dive!
 
 - [State Management in Activities](/posts/state-management-in-activities)
 - [State Management in Views](/posts/state-management-in-views)
@@ -131,9 +170,9 @@ Please check each deep dive in each subject as there is too much to for one post
 - [State Management in ViewModels](/posts/state-management-in-viewmodels)
 - [State Management in Jetpack Compose](/posts/state-management-in-jetpack-compose)
 
-I hope you find this useful in your Android Development Journey! 🚀
 
-Feel free to comment below if you have any questions or suggestions! 🙌
+Feel free to comment below if you have any questions!
 
-Cheers! 🍻
+By the way, I'm also on [Twitter](https://twitter.com/galex) and [LinkedIn](https://www.linkedin.com/in/agherschon/), so feel free to connect there too!
 
+Stay tuned for more posts on Android Development! 🚀
