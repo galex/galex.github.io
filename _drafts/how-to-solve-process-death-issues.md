@@ -81,7 +81,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 > ℹ️ Activities save all the View Hierarchy (for every View with a Resource ID) and all its Fragments states automatically.
 
+{% comment %}
 For more in-depth knowledge, consider reading the detailed article on [State Management in Activities](/posts/state-management-in-activities).
+{% endcomment %}
 
 ### Views
 
@@ -110,12 +112,40 @@ override fun onRestoreInstanceState(state: Parcelable?) {
     }
 }
 ```
-
+{% comment %}
 Check out a deeper dive on [State Management in Views](/posts/state-management-in-views) for more details.
+{% endcomment %}
 
 ### Fragments
 
-Fragments, like Activities, have a built-in mechanism for saving and restoring their state. They provide methods very similar to Activities:
+When we want to create a Fragment, we should use the `newInstance()` pattern because Fragments need to have a no-argument constructor, so we can't pass any argument to them directly. 
+
+The `newInstance()` pattern looks like this:
+
+```kotlin
+class ShowInfoFragment : Fragment() {
+
+    // (...)
+
+    companion object {
+        fun newInstance(name: String): ShowInfoFragment {
+            return ShowInfoFragment().apply {
+                arguments = Bundle().apply {
+                    putString("name", name)
+                }
+            }
+        }
+    }
+}
+```
+Arguments are automatically saved and restored by `androidx.fragment.app.FragmentStateManager` in its `saveState()` function, so we don't need to worry about saving them ourselves:
+
+```java
+if (mFragment.mArguments != null) {
+    stateBundle.putBundle(ARGUMENTS_KEY, mFragment.mArguments);
+}
+```
+If there is some extra data to save, Fragments also have a built-in mechanism for saving and restoring their state. They provide methods very similar to Activities:
 
 The `onSaveInstanceState(Bundle outState)` method is called before the Fragment is destroyed:
 
@@ -152,24 +182,61 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     }
 }
 ```
+Usually, we'll use `onViewCreated()` to restore the state of the Fragment.
 
+> ⚠️ We should **never** pass arguments or callbacks to a Fragment constructor.
+> - For arguments, we should use the `newInstance()` pattern
+> - For callbacks, we should use the [Fragment Result API](https://developer.android.com/guide/fragments/communicate#fragment-result)
+> 
+> And we're using Jetpack Navigation
+> 
+> - For arguments, we should use the [Safe Args](https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args) library
+> - For callbacks, we should use the [savedStateHandle of the previous BackStackEntry](https://developer.android.com/guide/navigation/use-graph/programmatic#returning_a_result)
+
+
+{% comment %}
 For a deeper dive on [State Management in Fragments](/posts/state-management-in-fragments), check out the post!
+{% endcomment %}
 
 ### ViewModels
+
+ViewModels are a bit different from the previous examples. They don't have a built-in mechanism for saving and restoring their state, but they receive an object called `SavedStateHandle` that can be used to save and restore state.
+
+```kotlin
+class NameViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
+    private val _name = MutableStateFlow<String?>(savedStateHandle.get<String>("name"))
+    val name: StateFlow<String?> = _name.asStateFlow()
+
+    fun setName(name: String) {
+        savedStateHandle.set("name", name)
+    }
+}
+```
 
 ### Jetpack Compose
 
 
 ### Conclusion
 
-Please check each deep dive!
+There's so much more to learn about State Management in Android! 
 
+There might or might be more deep diving posts coming up, which will be linked here:
+
+- State Management in Activities
+- State Management in Views
+- State Management in Fragments
+- State Management in ViewModels
+- State Management in Jetpack Navigation
+- State Management in Jetpack Compose
+
+{% comment %}
 - [State Management in Activities](/posts/state-management-in-activities)
 - [State Management in Views](/posts/state-management-in-views)
 - [State Management in Fragments](/posts/state-management-in-fragments)
 - [State Management in ViewModels](/posts/state-management-in-viewmodels)
+- [State Management in Jetpack Compose](/posts/state-management-in-jetpack-navigation)
 - [State Management in Jetpack Compose](/posts/state-management-in-jetpack-compose)
-
+{% endcomment %}
 
 Feel free to comment below if you have any questions!
 

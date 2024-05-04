@@ -7,7 +7,7 @@ mermaid: true
 comments: true
 ---
 
-![People holding phones in a party](/assets/img/header-beach.png)
+![Puzzle being completed](/assets/img/header-puzzle.png)
 
 
 
