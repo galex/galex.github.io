@@ -39,7 +39,7 @@ flowchart
  d(AndroidOS) -->|restoreFromBundle|Activity
 ```
 
-That's the most **important part to understand**, as it forms the foundation for state preservation and restoration in all Android frameworks such as Views, Fragments, and Jetpack Compose.
+That's the most **important part to understand**, as it forms the foundation for state preservation and restoration in all Android frameworks such as Views, Fragments, ViewModels, and Jetpack Compose.
 This mechanism is also employed by any third-party libraries we might be using, like [Jetpack Navigation](https://developer.android.com/guide/navigation).
 
 > ℹ️ The three other Entry Points have no built-in mechanism for state preservation and restoration.
@@ -79,7 +79,21 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
-> ℹ️ Activities save all the View Hierarchy (for every View with a Resource ID) and all its Fragments states automatically.
+Activities saves the **View Hierarchy**, for every View with a Resource ID, and all its **Fragments states** automatically. 
+Here's the code from `android.app.Activity` that does it for us:
+
+```java
+protected void onSaveInstanceState(@NonNull Bundle outState) {
+    // Here is saved the View Hierarchy
+    outState.putBundle(WINDOW_HIERARCHY_TAG, mWindow.saveHierarchyState());
+    // Here are saved all the fragments states
+    Parcelable p = mFragments.saveAllState();
+    if (p != null) {
+        outState.putParcelable(FRAGMENTS_TAG, p);
+    }
+    // more stuff here
+}
+```
 
 {% comment %}
 For more in-depth knowledge, consider reading the detailed article on [State Management in Activities](/posts/state-management-in-activities).
@@ -138,14 +152,14 @@ class ShowInfoFragment : Fragment() {
     }
 }
 ```
-Arguments are automatically saved and restored by `androidx.fragment.app.FragmentStateManager` in its `saveState()` function, so we don't need to worry about saving them ourselves:
+Arguments are automatically saved and restored by `androidx.fragment.app.FragmentStateManager` in its `saveState()` function, so we don't need to worry about saving those ourselves:
 
 ```java
 if (mFragment.mArguments != null) {
     stateBundle.putBundle(ARGUMENTS_KEY, mFragment.mArguments);
 }
 ```
-If there is some extra data to save, Fragments also have a built-in mechanism for saving and restoring their state. They provide methods very similar to Activities:
+If there is some extra data to save, Fragments also have a built-in mechanism for saving and restoring their state.
 
 The `onSaveInstanceState(Bundle outState)` method is called before the Fragment is destroyed:
 
@@ -184,14 +198,14 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 ```
 Usually, we'll use `onViewCreated()` to restore the state of the Fragment.
 
-> ⚠️ We should **never** pass arguments or callbacks to a Fragment constructor.
+> ⚠️ We should **never** pass arguments or callbacks to a Fragment constructor!
 > - For arguments, we should use the `newInstance()` pattern
 > - For callbacks, we should use the [Fragment Result API](https://developer.android.com/guide/fragments/communicate#fragment-result)
 > 
-> And we're using Jetpack Navigation
+> And if we're using [Jetpack Navigation](https://developer.android.com/guide/navigation)
 > 
 > - For arguments, we should use the [Safe Args](https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args) library
-> - For callbacks, we should use the [savedStateHandle of the previous BackStackEntry](https://developer.android.com/guide/navigation/use-graph/programmatic#returning_a_result)
+> - For callbacks, we should use the [savedStateHandle of the previous destination](https://developer.android.com/guide/navigation/use-graph/programmatic#returning_a_result)
 
 
 {% comment %}
@@ -200,7 +214,9 @@ For a deeper dive on [State Management in Fragments](/posts/state-management-in-
 
 ### ViewModels
 
-ViewModels are a bit different from the previous examples. They don't have a built-in mechanism for saving and restoring their state, but they receive an object called `SavedStateHandle` that can be used to save and restore state.
+ViewModels are a bit different from the previous examples. They have a built-in mechanism for saving and restoring their state but not by using functions. 
+
+ViewModels can receive an object of type `SavedStateHandle` that can be used to save and restore state:
 
 ```kotlin
 class NameViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
@@ -215,12 +231,35 @@ class NameViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
 
 ### Jetpack Compose
 
+We could be tempted to use `remember()` for our [MutableState](https://developer.android.com/reference/kotlin/androidx/compose/runtime/MutableState) typed `name` variable:
+
+```kotlin
+@Composable 
+fun NameScreen() {
+    var name by remember { mutableStateOf("Name") }
+    TextField(value = name, onValueChange = { name = it })
+}
+```
+
+But `remember()` doesn't save the state of the `name` variable when the process is terminated!
+
+Instead, we need to use `rememberSaveable()`:
+
+```kotlin
+@Composable 
+fun NameScreen() {
+    var name by rememberSaveable { mutableStateOf("Name") }
+    TextField(value = name, onValueChange = { name = it })
+}
+```
+
+> ℹ️ `rememberSaveable()` is the Compose equivalent of putting an ID on a View!
 
 ### Conclusion
 
-There's so much more to learn about State Management in Android! 
+We have learned a bunch about **State Management** in Android via the available APIs in Activities, Views, Fragments, ViewModels, Jetpack Compose, and even Jetpack Navigation. 
 
-There might or might be more deep diving posts coming up, which will be linked here:
+There's so much more to learn about State Management in Android! Coming up, deep dives on:
 
 - State Management in Activities
 - State Management in Views
