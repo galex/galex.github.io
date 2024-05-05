@@ -257,8 +257,7 @@ fun NameScreen() {
 
 ### Conclusion
 
-We have learned a bunch about **State Management** in Android via the available APIs in Activities, Views, Fragments, ViewModels, Jetpack Compose, and even Jetpack Navigation. 
-
+We have learned about **State Management** in Android via the available APIs and mechanisms in Activities, Views, Fragments, ViewModels, Jetpack Compose, and even Jetpack Navigation. 
 There's so much more to learn about State Management in Android! Coming up, deep dives on:
 
 - State Management in Activities
