@@ -7,7 +7,7 @@ mermaid: true
 comments: true
 ---
 
-![People holding phones in a party](/assets/img/header-beach.png)
+![A little paradise of a beach](/assets/img/header-beach.png)
 
 We'll now explore how Android expects to receive a **state** and how it gives that **state** back, so we can properly restore our screens. 
 This whole mechanism is called **State Management** or **State Preservation and Restoration**.
