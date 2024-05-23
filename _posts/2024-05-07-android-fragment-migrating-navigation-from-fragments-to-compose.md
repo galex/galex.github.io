@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Unveiling AndroidFragment: Migrating Navigation from Fragments to Compose"
-tags: ["android", "navigation", "Compose", "fragments"]
+tags: ["android", "navigation", "compose", "fragments"]
 categories: ["Android", "Navigation"]
 mermaid: true
 comments: true
