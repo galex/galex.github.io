@@ -179,6 +179,18 @@ Once installed, go to Settings > Languages & Frameworks > Kotlin > Compiler and 
 
 ![Enabling K2 IDE Plugin](/assets/img/enable-k2-ide-plugin.png)
 
+### Allow 3rd party Compiler Plugins
+
+Currently, the K2 IDE Plugin is set to enable only bundled Compiler Plugins by default, but we can fix this!
+
+To allow our Compiler Plugin to be loaded by Android Studio, we need to open the Registry:
+
+![Open the Registry of Android Studio](/assets/img/registry-android-studio.png)
+
+And set the `kotlin.k2.only.bundled.compiler.plugins.enabled` flag to `false`:
+
+![Open the Registry of Android Studio](/assets/img/registry-enable-3rd-party-compiler-plugins.png)
+
 ## Configuration
 
 If some naming conventions doesn't fit your project, you can configure the plugin in your `build.gradle.kts`:
@@ -196,7 +208,7 @@ yamvil {
 
 ## Conclusion
 
-Yamvil is very young, and there's still a lot of work to do, but I'm very excited about the possibilities it brings to the table!
+Yamvil is very young (0.0.2), and there's still a lot of work to do, but I'm very excited about the possibilities it brings to the table!
 If you have any improvements ideas for Yamvil, you are more than welcome to open an issue or a PR on the [GitHub repository](https://github.com/galex/yamvil/issues)!
 
 Feel free to comment below if you have any comments or questions! :)
