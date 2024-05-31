@@ -201,19 +201,15 @@ graph BT
 
 Every module becomes **completely independent and isolated from the others**, at the price of defining an interface for every dependency, which was not needed in the API/IMPL approach, so API/DI could result in a considerable amount of boilerplate code.
 
-The main advantage here is that the **incremental build-time is reduced**, as the `Logger` and `Network` modules don't need to be recompiled when the `Dashboard` or `Settings` modules change, and the codebase is much more scalable, as adding a new module is as simple as adding a new interface and its implementation.
-
-**On every change in every module, only the module itself and the `app` module will be recompiled!** 🚀
+The main advantage here is that **on every change in every module, only the module itself and the `app` module will be recompiled!** 🚀
 
 ## Conclusion
 
-Both approaches are valid and have their pros and cons. 
-
-The **API/IMPL** approach is more straightforward and easier to understand, but it quickly becomes a mess when the number of modules grows. 
-
+Both approaches are valid and have their pros and cons.
+The **API/IMPL** approach is more straightforward and easier to understand, but it quickly becomes a mess when the number of modules grows.
 The **API/DI** approach creates boilerplate code but scale much better and reduces meaningfully the incremental build-time.
 
-Personally after using for two years the API/IMPL approach, I'm now leaning towards the API/DI approach, as I find it much better for **incremental build-time** and **testing**.
+Personally after using for two years the API/IMPL approach, I'm now leaning towards the API/DI approach, as I find it much better for **reducing incremental build-time** and making **testing** much easier.
 
 What do you think of those two approaches? Do you have a preference? 
 
