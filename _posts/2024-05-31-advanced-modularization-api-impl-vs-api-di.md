@@ -203,7 +203,7 @@ Every module becomes **completely independent and isolated from the others**, at
 
 The main advantage here is that **on every change in every module, only the module itself and the `app` module will be recompiled!** 🚀
 
-Since each module defines its own dependencies to other modules via interfaces only, those interfaces will contain functions and properties that are actually used by the module, and nothing else, which means no unintended knowledge/access sharing and no need to mock functions and properties that are never used by the module in tests, which enforces **Interface Segregation Principle**, the **I** in [**SOLID**](https://en.wikipedia.org/wiki/SOLID).
+Also, since each module defines its own dependencies to other modules via interfaces only, those interfaces will contain functions and properties that are actually used by the module, and nothing else, which means no unintended knowledge/access sharing and no need to mock functions and properties that are never used by the module in tests, which enforces **Interface Segregation Principle**, the **I** in [**SOLID**](https://en.wikipedia.org/wiki/SOLID).
 
 Imagine a Feature Flag Module where in API/IMPL all feature flags are accessible in one interface to all. This can cause issues if a developer uses the wrong feature flag (we're all humans!). 
 In API/DI, the Feature Flag Module will not be accessible from every module, only from the `app` module, which will provide the right feature flag to the right module.
