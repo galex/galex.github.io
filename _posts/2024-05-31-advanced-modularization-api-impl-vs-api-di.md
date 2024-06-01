@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Advanced Modularization: API/IMPL vs API/DI"
-tags: ["modularization", "api", "impl", "implementation", "di", "dependency", "injection"]
+tags: ["modularization", "api", "impl", "implementation", "di", "dependency", "injection", "solid"]
 categories: ["Modularization", "Scale"]
 mermaid: true
 comments: true
@@ -36,7 +36,7 @@ Every Service is split into two modules:
 - the **API** module, containing the interface of the service
 - the **IMPL** module, containing the implementation of the service
 
-We'll be able to break the circular dependency by creating an `Logger` API and an `Network` API, and then have the `Logger` IMPL depend on the `Network` API, and the `Network` IMPL depend on the `Logger` API.
+We'll be able to break the circular dependency by creating a `Logger` API and a `Network` API, and then have the `Logger` IMPL depend on the `Network` API, and the `Network` IMPL depend on the `Logger` API.
 
 ```mermaid
 graph BT
@@ -202,6 +202,13 @@ graph BT
 Every module becomes **completely independent and isolated from the others**, at the price of defining an interface for every dependency, which was not needed in the API/IMPL approach, so API/DI could result in a considerable amount of boilerplate code.
 
 The main advantage here is that **on every change in every module, only the module itself and the `app` module will be recompiled!** 🚀
+
+Since each module defines its own dependencies to other modules via interfaces only, those interfaces will contain functions and properties that are actually used by the module, and nothing else, which means no unintended knowledge/access sharing and no need to mock functions and properties that are never used by the module in tests, which enforces **Interface Segregation Principle**, the **I** in [**SOLID**](https://en.wikipedia.org/wiki/SOLID).
+
+Imagine a Feature Flag Module where in API/IMPL all feature flags are accessible in one interface to all. This can cause issues if a developer uses the wrong feature flag (we're all humans!). 
+In API/DI, the Feature Flag Module will not be accessible from every module, only from the `app` module, which will provide the right feature flag to the right module.
+
+> ℹ️ Thanks to [Srđan Stanić](https://www.linkedin.com/in/srdanstanic/) for [mentioning](https://www.linkedin.com/feed/update/urn:li:activity:7202197393843326976?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7202197393843326976%2C7202210336525979648%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287202210336525979648%2Curn%3Ali%3Aactivity%3A7202197393843326976%29) the **Interface Segregation Principle**!
 
 ## Conclusion
 
