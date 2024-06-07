@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Detecting Process Death issues with Appium"
-tags: ["android", "process death", "detection", "reproduction", "find out", "appium", "automation", "QA"]
+tags: ["android", "process death", "detection", "reproduction", "find out", "appium", "automation", "qa"]
 categories: ["Android", "Process Death"]
 mermaid: true
 comments: true
