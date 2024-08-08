@@ -72,7 +72,7 @@ Running on 41161FDJG002EG
 
 ## Triggering The Issue with Maestro
 
-Since version XXX, Maestro offers the ability to trigger **System-initiated Process Death** using a command called `killApp`, which didn't exist before, and gave me the opportunity [to contribute to the Maestro project](https://github.com/mobile-dev-inc/maestro/pull/1727). 🎉
+Since version `1.37.0`, which was *finally* released last week, Maestro offers the ability to trigger **System-initiated Process Death** using a command called `killApp` which I was very happy to introduce into [to the Maestro project](https://github.com/mobile-dev-inc/maestro/pull/1727). Yay to Open-Source! 🎉
 
 We'll call this file appropriately `detect-process-death-issue.yaml`:
 
@@ -134,11 +134,11 @@ Assertion is false: "Name = John Doe", id: dev.galex.process.death.demo:id/show_
 
 ==== Debug output (logs & screenshots) ====
 
-/Users/galex/.maestro/tests/2024-06-07_092526
+/Users/galex/.maestro/tests/<date>
 ```
 Perfect! We've successfully detected the **System-initiated Process Death** issue with Maestro! 🎉
 
-In the generated folder `/Users/galex/.maestro/tests/2024-06-07_092526` we'll find the screenshots taken by Maestro, showing the **ShowInfoFragment** screen with the text `Name = null` instead of `Name = John Doe`:
+In the generated folder `/Users/galex/.maestro/tests/<date>` we'll find the screenshots taken by Maestro, showing the **ShowInfoFragment** screen with the text `Name = null` instead of `Name = John Doe`:
 
 ![Faulty screen](/assets/img/screenshot-❌-1717741567602-(detect-process-death-issue.yaml).png)
 
@@ -196,13 +196,13 @@ Assertion is false: "Name = John Doe", id: dev.galex.process.death.demo:id/show_
                                                                                                                  
 ==== Debug output (logs & screenshots) ====                                                                      
 
-/Users/galex/.maestro/tests/2024-06-07_105906
+/Users/galex/.maestro/tests/<date>
 ```
-But we've improved the reusability of our detecting Process Death Flow!
+We've improved the re-usability of our detecting method!
 
 ## Conclusion
 
-We've successfully detected the **System-initiated Process Death** issue with [Maestro](https://github.com/mobile-dev-inc/maestro)! 💪 It makes the whole ordeal so easy I seriously think [Maestro](https://github.com/mobile-dev-inc/maestro) should be a part of every feature we build to ensure its quality and robustness! 🚀
+We've successfully detected the **System-initiated Process Death** issue with [Maestro](https://github.com/mobile-dev-inc/maestro)! 💪 It makes the whole ordeal so easy I seriously think an E2E [Maestro](https://github.com/mobile-dev-inc/maestro) test should be a part of every feature we build to ensure its quality and robustness! 🚀
 
 Let me know what you think or if you have any questions in the comments! 📝
 
