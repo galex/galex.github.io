@@ -8,11 +8,9 @@ comments: true
 ---
 ![Waterfall flowing into the Sea](/assets/img/header-waterfall.png)
 
-## Introduction
+Automation Frameworks like [Appium Inspector](https://github.com/appium/appium-inspector) or [Maestro Studio](https://docs.maestro.dev/getting-started/maestro-studio) need to find views ids in our mobile apps to be able to interact with its views and run the thousands of E2E tests we have in our projects.
 
-Automation Frameworks like [Appium Inspector](https://github.com/appium/appium-inspector) or [Maestro Studio](https://docs.maestro.dev/getting-started/maestro-studio) need to find views ids in our mobile app to be able to interact with its views.
-
-But in the new world of Jetpack Compose, we don't have XML files anymore, so we don't have View Ids anymore, so how do we provide those IDs to the automation framework?
+But in the new world of Jetpack Compose, we don't have XML files anymore, so we don't have View IDs anymore, so how do we provide those IDs to the automation framework?
 
 ## Definition of Done
 
@@ -21,7 +19,7 @@ Before we start, let's define what we want to achieve:
 - We want the IDs to be 100% unique, meaning we don't have to worry about the same id existing twice in a list, aka the most common issue with RecyclerView
 - We want to relate the ids to the "context" of the screen
 
-I call this whole thing `AutomationContext` because we're using it to provide the context (and ids) of the screen to an Automation framework.
+I call this whole thing `AutomationContext` because we're using it to provide the context (and ids) of a screen to an Automation framework.
 
 ## Code Project
 
@@ -216,7 +214,7 @@ This first approach has a big issue which is that we have to wrap every single C
 
 ## Second Approach: Modifiers
 
-We can write this differently using [ModifierLocal](https://developer.android.com/reference/kotlin/androidx/compose/ui/modifier/ModifierLocal) which allows us to pass information through the *Modifier tree*, which is exactly what we need!
+We can write this differently using [ModifierLocal](https://developer.android.com/reference/kotlin/androidx/compose/ui/modifier/ModifierLocal) which allows us to pass information through the *Modifier tree* 🤩
 
 To use `ModifierLocal`, we need to:
 - Consume the previously provided context via `Modifier.modifierLocalConsumer {}`
@@ -337,9 +335,9 @@ Exactly the same as the first approach in terms of view ids seen by Automation F
 
 ## Conclusion
 
-The second approach is much cleaner and easier to use, and we got exactly what we wanted: unique view ids, per row, that are related to the context of the screen! ❤️
+The second approach, build on Modifiers, is much cleaner and easier to use, and we got exactly what we wanted: unique view ids, per row, that are related to the context of the screen! ❤️
 
-I've prepared you a Gist with all the relevant code so you can copy/paste it in your project and start using it right away: [Gist](https://gist.github.com/galex/28d5ad2325ebbc633d7f4e4ee98c6ee1) 💪
+I've prepared you a [Gist with all the relevant code](https://gist.github.com/galex/28d5ad2325ebbc633d7f4e4ee98c6ee1) so you can copy/paste it in your project and start using it right away! 💪
 
 Let me know what you think or if you have any questions in the comments! 📝
 
