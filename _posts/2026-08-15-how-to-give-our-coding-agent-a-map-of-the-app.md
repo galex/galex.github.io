@@ -33,8 +33,8 @@ the session, so the next one starts blind and pays for the same exploration agai
 ## The Solution
 
 The navigation graph is not a thing to be **discovered** at runtime, it's a thing we already
-**know**. So let's declare it as **Kotlin**, inside the app, and let the probe serve it as JSON on
-`GET /nav_map` like every other answer it already gives.
+**know**. So let's declare it as **Kotlin code**, inside the app, and let the probe serve it as JSON
+on `GET /nav_map` like every other answer it already gives.
 
 Everything below runs in the demo project, on the
 [post/navigation-map](https://github.com/galex/toy-app/tree/post/navigation-map) branch, which stays
