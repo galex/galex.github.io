@@ -136,6 +136,10 @@ flowchart LR
     D -->|Yes| E[Opens a pull request]
 ```
 
+One rule comes with it, and it's the only maintenance the map ever asks for: **when the navigation
+changes, that object changes with it**. A new screen gets its own `Screen`, a new way out of a
+screen gets its own `Action`, and both land in the same commit as the code they describe.
+
 ### Teaching the agent to read it first
 
 None of this helps if our agent doesn't reach for the map on its own, and the honest answer is that
@@ -167,6 +171,8 @@ owns and the taps that lead out of it. Ask for it BEFORE anything else.
 ## Rules
 
 - Never tap a coordinate that did not come from a snapshot taken seconds ago.
+- When you change the navigation, update `AppNavigationMap` in the same edit. A new screen gets a
+  `Screen`, a new way out of a screen gets an `Action`, a screen you removed leaves the map.
 - A screen you just added is not done until it has a `Screen` in `AppNavigationMap`, with its ids
   and its exits, and its ids come from the `*Ids` object next to the composable.
 ```
