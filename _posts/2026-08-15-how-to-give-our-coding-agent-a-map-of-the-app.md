@@ -182,6 +182,34 @@ owns and the taps that lead out of it. Ask for it BEFORE anything else.
   and its exits, and its ids come from the `*Ids` object next to the composable.
 ```
 
+### The prompt to get it into our own project
+
+The fastest way to add this to a project that already has a probe is to hand the whole thing to our
+agent, and here it is. It's the short version of the Phase 7 I added to
+[PROMPT.md](https://github.com/galex/toy-app/blob/main/PROMPT.md) in the demo project, which carries
+the traps in more detail:
+
+````markdown
+Add a navigation map to the probe, so you stop rediscovering this app through /ui_snapshot on
+every edit.
+
+- Declare it as Kotlin, in the app, never as a file sitting beside it. In the probe module:
+  NavigationMap(screens), Screen(id, breadcrumb, entry, ids, actions), Action(tapId, leadsTo),
+  as plain data classes serialized by hand like every other payload.
+- The app's own map is ONE static object in the src/debug source set, handed to the probe through
+  a hook next to the breadcrumb one, so there is no navigation map in a release build.
+- The ids in it MUST come from the same constants the composables pass to Modifier.automationId.
+  If those are string literals today, extract them into a <Screen>Ids object first. That is the
+  whole point of the map being code: renaming an id then breaks the build.
+- Breadcrumbs carry {placeholders} for the parts that depend on data, so a check matches the shape
+  of a screen and not one row of it.
+- Serve it on GET /nav_map and add a nav-map subcommand to the CLI.
+- Then put the rules in a skill rather than in CLAUDE.md: read the map before any tap, and update
+  the map in the same edit that changes the navigation.
+
+STOP when `probe nav-map` returns every screen of this app with its real ids.
+````
+
 ## Conclusion
 
 The map costs one Kotlin object and one endpoint, and it removes the most expensive habit our agent
