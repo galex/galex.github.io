@@ -140,6 +140,11 @@ One rule comes with it, and it's the only maintenance the map ever asks for: **w
 changes, that object changes with it**. A new screen gets its own `Screen`, a new way out of a
 screen gets its own `Action`, and both land in the same commit as the code they describe.
 
+It ends up making the app itself **more healthy**, and not only our agent faster. A new screen now
+arrives with its ids named in one place and its exits written down next to them, which is our
+standard of building **maintainable screens**, and having our agent maintain this actively helps a
+lot in keeping the app clean and up to date with our standards. 🚀
+
 ### Teaching the agent to read it first
 
 None of this helps if our agent doesn't reach for the map on its own, and the honest answer is that
