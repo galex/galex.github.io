@@ -179,6 +179,9 @@ agent is much faster at doing its job now that it has a navigation map at hand, 
 reduce the **tokens** it used to require to dump the UI as json and analyse it each time it needed
 to.
 
+A big thank you to [Dor Ditchi](https://www.linkedin.com/in/dor-ditchi-77a150101/), who came up with
+the idea of a navigation map in the first place! ❤️
+
 Let me know what you think or if you have questions in the comments! 📝
 
 By the way, I'm also on [Twitter](https://twitter.com/galex) and [LinkedIn](https://www.linkedin.com/in/agherschon/), so feel free to connect there too!
